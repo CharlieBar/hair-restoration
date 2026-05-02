@@ -65,6 +65,33 @@
     });
   });
 
-  // ---------- ACCESSIBLE BUTTON FOR <details> CHEVRONS ----------
-  // (already handled via summary clickable area; just ensures keyboard works)
+  // ---------- MOBILE MENU TOGGLE ----------
+  const menuBtn = document.querySelector('.menu-toggle');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('menu-open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close menu when a nav link is clicked
+    nav.querySelectorAll('.left a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && nav.classList.contains('menu-open')) {
+        nav.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('menu-open')) {
+        nav.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 })();
