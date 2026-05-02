@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Loss Self-Assessment | Katona Hair Restoration · Essence MedSpa</title>
+<meta name="description" content="A free, 90-second hair loss self-assessment by Dr. Arthur Katona. Identify your Norwood or Ludwig stage, get a personalized treatment recommendation, and an estimated graft count and cost range.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script>(function(){try{const t=localStorage.getItem('katona-theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(_){document.documentElement.dataset.theme='dark';}})();</script>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="left">
+    <a href="../dr-katona.html">Dr. Katona</a>
+    <a href="../hair-transplant.html">Transplant</a>
+    <a href="../hair-restoration.html">Restoration</a>
+    <a href="../advanced-aesthetics.html">Aesthetics</a>
+    <a href="index.html" class="active">Tools</a>
+    <a href="../blog/index.html">Journal</a>
+  </div>
+  <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+  <div class="right">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="../book.html" class="cta">Consultation →</a>
+  </div>
+</nav>
+
+<div class="telemetry">
+  <div class="l"><span class="dot"></span><span>KATONA / TOOLS · ASSESSMENT</span></div>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>FREE · 90-SECOND ASSESSMENT</span><span class="div">/</span>
+      <span>NORWOOD + LUDWIG SCALES</span><span class="div">/</span>
+      <span>PERSONALIZED RECOMMENDATION</span><span class="div">/</span>
+      <span>ESTIMATED GRAFT COUNT + COST</span><span class="div">/</span>
+      <span>BUILT BY DR. KATONA · 27 YEARS · 20,000+ PROCEDURES</span><span class="div">/</span>
+      <span>FREE · 90-SECOND ASSESSMENT</span><span class="div">/</span>
+      <span>NORWOOD + LUDWIG SCALES</span><span class="div">/</span>
+      <span>PERSONALIZED RECOMMENDATION</span><span class="div">/</span>
+    </div>
+  </div>
+  <div class="r mono">EDGEBROOK · CHICAGO</div>
+</div>
+
+<!-- TOOL SHELL -->
+<main class="tool-shell" id="toolShell">
+
+  <!-- PROGRESS BAR -->
+  <div class="tool-progress" id="toolProgress">
+    <span>STEP <b id="stepNum" style="color:var(--coral)">1</b> / 6</span>
+    <div class="bar"><div class="fill" id="progressFill" style="width:16%"></div></div>
+    <span class="pct" id="pctLabel">16%</span>
+  </div>
+
+  <!-- STEP 1 — INTRO / GENDER -->
+  <section class="tool-step active" data-step="1">
+    <div class="label">— STEP 01 / PATTERN TYPE</div>
+    <h2>What pattern of hair loss are <i>you</i> experiencing?</h2>
+    <p class="sub">The Norwood scale classifies male-pattern hair loss; the Ludwig scale classifies female-pattern. Pick the one that applies to you.</p>
+    <div class="tool-choices cols-2">
+      <button class="choice" data-key="gender" data-val="male">
+        <span class="num">// 01_NORWOOD</span>
+        <span class="h">Male <i>pattern</i></span>
+        <span class="d">Frontal recession, vertex thinning. Norwood scale (I — VII).</span>
+      </button>
+      <button class="choice" data-key="gender" data-val="female">
+        <span class="num">// 02_LUDWIG</span>
+        <span class="h">Female <i>pattern</i></span>
+        <span class="d">Diffuse central thinning, preserved hairline. Ludwig scale (I — III).</span>
+      </button>
+    </div>
+    <div class="tool-nav">
+      <span></span>
+      <button class="next" id="next1" disabled>Continue <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- STEP 2 — STAGE SELECTOR (Norwood) -->
+  <section class="tool-step" data-step="2" data-gender="male">
+    <div class="label">— STEP 02 / STAGE</div>
+    <h2>Which most resembles <i>your</i> hair?</h2>
+    <p class="sub">Pick the stage that looks closest to your current pattern. If you're between two, choose the more advanced one.</p>
+    <div class="stage-grid" id="norwoodGrid">
+      <!-- populated by JS -->
+    </div>
+    <div class="tool-nav">
+      <button class="back">← Back</button>
+      <button class="next" id="next2m" disabled>Continue <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- STEP 2 — STAGE SELECTOR (Ludwig) -->
+  <section class="tool-step" data-step="2" data-gender="female">
+    <div class="label">— STEP 02 / STAGE</div>
+    <h2>Which most resembles <i>your</i> hair?</h2>
+    <p class="sub">Pick the stage that looks closest to your current part-line and density.</p>
+    <div class="stage-grid three" id="ludwigGrid">
+      <!-- populated by JS -->
+    </div>
+    <div class="tool-nav">
+      <button class="back">← Back</button>
+      <button class="next" id="next2f" disabled>Continue <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- STEP 3 — AGE -->
+  <section class="tool-step" data-step="3">
+    <div class="label">— STEP 03 / AGE</div>
+    <h2>What's <i>your</i> age range?</h2>
+    <p class="sub">Age affects how aggressively to plan — younger patients with progressive loss need a different long-term strategy than older patients with stable loss.</p>
+    <div class="tool-choices cols-3">
+      <button class="choice" data-key="age" data-val="18-25"><span class="num">// 01</span><span class="h">18 — 25</span><span class="d">Early onset, possibly long progression ahead.</span></button>
+      <button class="choice" data-key="age" data-val="26-35"><span class="num">// 02</span><span class="h">26 — 35</span><span class="d">Common decision-making window.</span></button>
+      <button class="choice" data-key="age" data-val="36-45"><span class="num">// 03</span><span class="h">36 — 45</span><span class="d">Pattern usually well-defined.</span></button>
+      <button class="choice" data-key="age" data-val="46-55"><span class="num">// 04</span><span class="h">46 — 55</span><span class="d">Often stabilized; donor area assessable.</span></button>
+      <button class="choice" data-key="age" data-val="56-65"><span class="num">// 05</span><span class="h">56 — 65</span><span class="d">Mature pattern; restoration still very viable.</span></button>
+      <button class="choice" data-key="age" data-val="65+"><span class="num">// 06</span><span class="h">65 +</span><span class="d">Stable; goals shift toward density restoration.</span></button>
+    </div>
+    <div class="tool-nav">
+      <button class="back">← Back</button>
+      <button class="next" id="next3" disabled>Continue <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- STEP 4 — FAMILY HISTORY -->
+  <section class="tool-step" data-step="4">
+    <div class="label">— STEP 04 / FAMILY HISTORY</div>
+    <h2>Family history of <i>hair loss</i>?</h2>
+    <p class="sub">Genetic predisposition is the most reliable predictor of how your hair loss will progress over the next decade.</p>
+    <div class="tool-choices cols-3">
+      <button class="choice" data-key="family" data-val="strong"><span class="num">// 01</span><span class="h">Strong</span><span class="d">Father AND grandfather (either side) with significant hair loss.</span></button>
+      <button class="choice" data-key="family" data-val="some"><span class="num">// 02</span><span class="h">Some</span><span class="d">One immediate male relative with hair loss.</span></button>
+      <button class="choice" data-key="family" data-val="none"><span class="num">// 03</span><span class="h">None / unsure</span><span class="d">No clear family history, or unknown.</span></button>
+    </div>
+    <div class="tool-nav">
+      <button class="back">← Back</button>
+      <button class="next" id="next4" disabled>Continue <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- STEP 5 — PROGRESSION RATE -->
+  <section class="tool-step" data-step="5">
+    <div class="label">— STEP 05 / PROGRESSION</div>
+    <h2>How fast is your hair loss <i>progressing</i>?</h2>
+    <p class="sub">Active loss requires a different approach than stable loss — non-surgical intervention to stabilize comes first.</p>
+    <div class="tool-choices cols-2">
+      <button class="choice" data-key="rate" data-val="stable"><span class="num">// 01</span><span class="h">Stable</span><span class="d">No noticeable change in 2+ years.</span></button>
+      <button class="choice" data-key="rate" data-val="slow"><span class="num">// 02</span><span class="h">Slow</span><span class="d">Gradual change over several years.</span></button>
+      <button class="choice" data-key="rate" data-val="active"><span class="num">// 03</span><span class="h">Active</span><span class="d">Visibly accelerating in the last 12 months.</span></button>
+      <button class="choice" data-key="rate" data-val="recent"><span class="num">// 04</span><span class="h">Just starting</span><span class="d">First noticed in the last 6 months.</span></button>
+    </div>
+    <div class="tool-nav">
+      <button class="back">← Back</button>
+      <button class="next" id="next5" disabled>Continue <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- STEP 6 — GOALS -->
+  <section class="tool-step" data-step="6">
+    <div class="label">— STEP 06 / PRIORITY</div>
+    <h2>What's your <i>priority</i>?</h2>
+    <p class="sub">There's no universally correct goal — the right path depends on what you most want from treatment.</p>
+    <div class="tool-choices cols-2">
+      <button class="choice" data-key="goal" data-val="stop"><span class="num">// 01</span><span class="h">Stop further loss</span><span class="d">Preserve what I have. Stabilize active shedding.</span></button>
+      <button class="choice" data-key="goal" data-val="density"><span class="num">// 02</span><span class="h">Restore density</span><span class="d">Get my hair back to where it was.</span></button>
+      <button class="choice" data-key="goal" data-val="permanent"><span class="num">// 03</span><span class="h">Permanent solution</span><span class="d">Open to surgery for the most lasting result.</span></button>
+      <button class="choice" data-key="goal" data-val="non-surgical"><span class="num">// 04</span><span class="h">Non-surgical only</span><span class="d">Prefer to exhaust all non-invasive options first.</span></button>
+    </div>
+    <div class="tool-nav">
+      <button class="back">← Back</button>
+      <button class="next" id="next6" disabled>See My Results <span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- RESULTS SCREEN -->
+  <section class="tool-step" data-step="7">
+    <div class="tool-result" id="resultBox">
+      <!-- populated by JS -->
+    </div>
+    <div style="text-align:center;margin-top:24px">
+      <button class="tool-restart" id="restartBtn">↺ START OVER</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="grid">
+    <div>
+      <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+      <p class="tagline">27 years. 20,000+ procedures. One surgeon — at Essence MedSpa, Edgebrook.</p>
+      <address>5418 W. Devon Avenue<br>Edgebrook, Chicago, IL 60646<br><a href="tel:+1773XXXXXXX">(773) XXX-XXXX</a><br><a href="mailto:consult@essencemedspachicago.com">consult@essencemedspachicago.com</a></address>
+    </div>
+    <div><h5>— Services</h5><ul>
+      <li><a href="../hair-transplant.html">Hair Transplant</a></li>
+      <li><a href="../hair-restoration.html">Hair Restoration</a></li>
+      <li><a href="../advanced-aesthetics.html">Advanced Aesthetics</a></li>
+      <li><a href="../dr-katona.html">About Dr. Katona</a></li>
+      <li><a href="index.html">Tools</a></li>
+      <li><a href="../blog/index.html">Journal</a></li>
+    </ul></div>
+    <div><h5>— Hours</h5><ul>
+      <li>Mon — Thu &nbsp; 9:00 — 7:00</li>
+      <li>Friday &nbsp; 9:00 — 6:00</li>
+      <li>Saturday &nbsp; 10:00 — 4:00</li>
+      <li>Sunday &nbsp; Closed</li>
+    </ul></div>
+    <div><h5>— Connect</h5><ul>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Google Reviews · 4.9 ★</a></li>
+      <li><a href="../book.html">Book Consultation →</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Katona Hair Restoration at Essence MedSpa & Wellness Center · Edgebrook, Chicago</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Compliance</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+/* ========================================================================
+   HAIR LOSS SELF-ASSESSMENT — Quiz state machine + recommendation engine
+   ======================================================================== */
+(() => {
+  const state = {
+    gender: null,
+    stage: null,       // 'I'..'VII' (Norwood) or 'I','II','III' (Ludwig)
+    age: null,
+    family: null,
+    rate: null,
+    goal: null,
+  };
+
+  const totalSteps = 6;
+  let currentStep = 1;
+
+  // ---------- SVG illustrations: Norwood I–VII ----------
+  // Top-down view: head circle outline, hair shape filled
+  function norwoodSVG(stage){
+    const head = `<circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 3" opacity=".4"/>`;
+    const hair = {
+      I:   `<path d="M 8 50 Q 14 18, 50 14 Q 86 18, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/>`,
+      II:  `<path d="M 8 50 Q 14 22, 30 18 L 38 24 L 50 22 L 62 24 L 70 18 Q 86 22, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/>`,
+      III: `<path d="M 8 50 Q 14 28, 28 26 L 36 38 Q 42 34, 50 36 Q 58 34, 64 38 L 72 26 Q 86 28, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/>`,
+      IIIv:`<path d="M 8 50 Q 14 28, 28 26 L 36 38 Q 42 34, 50 36 Q 58 34, 64 38 L 72 26 Q 86 28, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/><circle cx="50" cy="72" r="9" fill="var(--bg)"/>`,
+      IV:  `<path d="M 8 50 Q 14 32, 26 30 L 34 42 Q 42 38, 50 40 Q 58 38, 66 42 L 74 30 Q 86 32, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/><ellipse cx="50" cy="70" rx="13" ry="11" fill="var(--bg)"/>`,
+      V:   `<path d="M 8 52 Q 12 38, 22 36 L 30 46 Q 40 42, 50 44 Q 60 42, 70 46 L 78 36 Q 88 38, 92 52 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/><path d="M 30 50 Q 50 45, 70 50 Q 70 75, 50 80 Q 30 75, 30 50 Z" fill="var(--bg)"/>`,
+      VI:  `<path d="M 8 56 Q 12 46, 18 44 L 18 88 Q 30 96, 50 96 Q 70 96, 82 88 L 82 44 Q 88 46, 92 56 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/>`,
+      VII: `<path d="M 8 64 L 18 60 L 18 88 Q 30 96, 50 96 Q 70 96, 82 88 L 82 60 L 92 64 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/>`,
+    }[stage];
+    return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">${head}${hair}</svg>`;
+  }
+
+  // ---------- SVG illustrations: Ludwig I–III ----------
+  // Top-down with central part visible
+  function ludwigSVG(stage){
+    const head = `<circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 3" opacity=".4"/>`;
+    const hair = {
+      I:   `<path d="M 8 50 Q 14 18, 50 14 Q 86 18, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/><rect x="48" y="20" width="4" height="46" fill="var(--bg)" rx="2"/>`,
+      II:  `<path d="M 8 50 Q 14 18, 50 14 Q 86 18, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/><ellipse cx="50" cy="44" rx="12" ry="28" fill="var(--bg)"/>`,
+      III: `<path d="M 8 50 Q 14 18, 50 14 Q 86 18, 92 50 L 92 88 Q 80 96, 50 96 Q 20 96, 8 88 Z" fill="currentColor" opacity=".85"/><ellipse cx="50" cy="46" rx="22" ry="32" fill="var(--bg)"/>`,
+    }[stage];
+    return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">${head}${hair}</svg>`;
+  }
+
+  // ---------- Build stage grids ----------
+  const norwoodStages = [
+    { id:'I',   name:'Stage I',     desc:'No significant loss' },
+    { id:'II',  name:'Stage II',    desc:'Slight temporal recession' },
+    { id:'III', name:'Stage III',   desc:'Defined "M" hairline' },
+    { id:'IIIv',name:'Stage III V', desc:'Recession + crown thinning' },
+    { id:'IV',  name:'Stage IV',    desc:'Bridge of hair connects front + crown' },
+    { id:'V',   name:'Stage V',     desc:'Bridge thinning, gap closing' },
+    { id:'VI',  name:'Stage VI',    desc:'Front + crown loss merge' },
+    { id:'VII', name:'Stage VII',   desc:'Most advanced — band remains' },
+  ];
+  const ludwigStages = [
+    { id:'I',   name:'Stage I',   desc:'Mild diffuse thinning' },
+    { id:'II',  name:'Stage II',  desc:'Moderate central thinning' },
+    { id:'III', name:'Stage III', desc:'Advanced central thinning' },
+  ];
+
+  function buildStageGrid(gridEl, stages, scaleName, svgFn, key){
+    gridEl.innerHTML = stages.map(s => `
+      <button class="stage-card" data-key="${key}" data-val="${s.id}">
+        <span class="scale">${scaleName}</span>
+        ${svgFn(s.id)}
+        <span class="stage-name">${s.name}</span>
+        <span class="stage-desc">${s.desc}</span>
+      </button>
+    `).join('');
+  }
+  buildStageGrid(document.getElementById('norwoodGrid'), norwoodStages, 'NORWOOD', norwoodSVG, 'stage');
+  buildStageGrid(document.getElementById('ludwigGrid'),  ludwigStages,  'LUDWIG',  ludwigSVG,  'stage');
+
+  // ---------- Step navigation ----------
+  function show(step){
+    currentStep = step;
+    document.querySelectorAll('.tool-step').forEach(el => el.classList.remove('active'));
+    if (step <= 6) {
+      // Show step (handle gender-specific step 2)
+      let target;
+      if (step === 2) {
+        target = document.querySelector(`.tool-step[data-step="2"][data-gender="${state.gender}"]`);
+      } else {
+        target = document.querySelector(`.tool-step[data-step="${step}"]:not([data-gender])`);
+      }
+      if (target) target.classList.add('active');
+      // Update progress
+      const pct = Math.round((step / 6) * 100);
+      document.getElementById('stepNum').textContent = step;
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('pctLabel').textContent = pct + '%';
+      document.getElementById('toolProgress').style.display = 'flex';
+    } else {
+      // Results screen
+      document.querySelector('.tool-step[data-step="7"]').classList.add('active');
+      document.getElementById('toolProgress').style.display = 'none';
+      renderResults();
+    }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  // ---------- Choice handlers (event delegation) ----------
+  document.addEventListener('click', e => {
+    // Choice / Stage buttons
+    const btn = e.target.closest('.choice, .stage-card');
+    if (btn) {
+      const key = btn.dataset.key;
+      const val = btn.dataset.val;
+      state[key] = val;
+      // Visual selection within step
+      const step = btn.closest('.tool-step');
+      step.querySelectorAll(`[data-key="${key}"]`).forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      // Enable Next button in this step
+      const next = step.querySelector('.next');
+      if (next) next.disabled = false;
+    }
+    // Next button
+    if (e.target.matches('.next') || e.target.closest('.next')) {
+      const target = e.target.matches('.next') ? e.target : e.target.closest('.next');
+      if (target.disabled) return;
+      show(currentStep + 1);
+    }
+    // Back button
+    if (e.target.matches('.back') || e.target.closest('.back')) {
+      show(Math.max(1, currentStep - 1));
+    }
+    // Restart
+    if (e.target.id === 'restartBtn') {
+      Object.keys(state).forEach(k => state[k] = null);
+      document.querySelectorAll('.choice, .stage-card').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.next').forEach(b => b.disabled = true);
+      show(1);
+    }
+  });
+
+  // ---------- RECOMMENDATION ENGINE ----------
+  function compute(){
+    const isMale = state.gender === 'male';
+    const stage = state.stage;
+    const age = state.age;
+    const family = state.family;
+    const rate = state.rate;
+    const goal = state.goal;
+
+    // --- Stage classification text ---
+    const stageNames = {
+      I:  'Norwood I — No Significant Loss',
+      II: 'Norwood II — Early Recession',
+      III:'Norwood III — Defined Recession',
+      IIIv:'Norwood III Vertex — Frontal + Crown',
+      IV: 'Norwood IV — Bridge Stage',
+      V:  'Norwood V — Bridge Thinning',
+      VI: 'Norwood VI — Advanced',
+      VII:'Norwood VII — Most Advanced',
+    };
+    const ludwigNames = {
+      I:  'Ludwig I — Mild Diffuse Thinning',
+      II: 'Ludwig II — Moderate Diffuse Thinning',
+      III:'Ludwig III — Advanced Diffuse Thinning',
+    };
+    const stageName = isMale ? stageNames[stage] : ludwigNames[stage];
+
+    // --- Graft estimate (Norwood) ---
+    const graftRange = isMale ? ({
+      I:   [0, 0],
+      II:  [800, 1500],
+      III: [1500, 2500],
+      IIIv:[2000, 3000],
+      IV:  [2500, 3500],
+      V:   [3000, 4500],
+      VI:  [4000, 6000],
+      VII: [5000, 7500],
+    })[stage] : ({
+      I:   [0, 0],
+      II:  [1500, 2500],
+      III: [2500, 4000],
+    })[stage];
+
+    // --- Cost estimate (using $5–8 per graft, capped at session pricing) ---
+    function fmtMoney(n){ return '$' + (n/1000).toFixed(n>=10000?0:1) + 'k'; }
+    let costRange = null;
+    if (graftRange[1] > 0) {
+      const low = Math.max(6000, graftRange[0] * 5);
+      const high = Math.min(30000, graftRange[1] * 7);
+      costRange = `${fmtMoney(low)} — ${fmtMoney(high)}`;
+    }
+
+    // --- Recommended path ---
+    let pathTitle, pathBody, pathBullets, sessionsText;
+    const earlyStage = ['I','II','III'].includes(stage);
+    const midStage = ['IIIv','IV'].includes(stage);
+    const advancedStage = ['V','VI','VII'].includes(stage);
+    const ludwigEarly = !isMale && stage === 'I';
+    const ludwigMid   = !isMale && stage === 'II';
+    const ludwigAdv   = !isMale && stage === 'III';
+
+    if (goal === 'non-surgical' || (earlyStage && goal !== 'permanent') || ludwigEarly) {
+      pathTitle = 'Non-surgical first-line protocol';
+      pathBody = 'Your stage and goals fit the strongest evidence base for combination non-surgical therapy. The objective is to stabilize, slow further loss, and meaningfully improve density without surgery.';
+      pathBullets = [
+        'PRP (Platelet-Rich Plasma) — series of 3–4 sessions, performed personally by Dr. Katona',
+        'Low-Level Light Therapy (LLLT) — FDA-cleared, in-office and at-home options',
+        isMale ? 'Medical therapy — Finasteride and/or topical Minoxidil under physician supervision' : 'Hormonal evaluation and customized topical protocol',
+        'Quarterly reassessment to refine the protocol over time',
+      ];
+      sessionsText = 'No surgery indicated at this time';
+    } else if (rate === 'active' && earlyStage) {
+      pathTitle = 'Stabilize first, then evaluate surgery';
+      pathBody = 'Active progression on top of an early stage means the priority is medical stabilization. Surgery on actively-shedding hair often produces uneven results — better outcomes follow once shedding has been controlled.';
+      pathBullets = [
+        'Begin medical therapy immediately to stabilize active loss',
+        'PRP series to support follicular activity',
+        'Reassess at 6 months — surgical evaluation if pattern is stable',
+        'Do not pursue surgical restoration until loss has stabilized',
+      ];
+      sessionsText = 'Surgery deferred 6–12 months pending stabilization';
+    } else if (midStage || ludwigMid) {
+      pathTitle = 'Combination — non-surgical + surgical evaluation';
+      pathBody = 'Your stage is the inflection point at which both surgical and non-surgical paths produce meaningful results. The strongest outcomes typically combine both — surgery to restore lost density, non-surgical to preserve native and transplanted hair long-term.';
+      pathBullets = [
+        `Surgical evaluation for ${graftRange[0].toLocaleString()}–${graftRange[1].toLocaleString()} grafts`,
+        `Single-session ${isMale ? 'FUE or FUT' : 'FUT (preferred for women)'} as the primary intervention`,
+        'PRP added pre- and post-procedure to maximize outcome',
+        'Long-term medical therapy to preserve native hair around the transplant',
+      ];
+      sessionsText = '1 surgical session typical · ongoing maintenance';
+    } else if (advancedStage || ludwigAdv) {
+      pathTitle = 'Surgery primary, non-surgical supportive';
+      pathBody = `Your stage is well past where non-surgical alone can fully restore. The primary intervention is surgical — likely ${stage === 'VI' || stage === 'VII' ? 'using FUE/FUT hybrid technique to maximize donor utilization' : 'a high-graft single or staged procedure'}.`;
+      pathBullets = [
+        `Surgical plan for ${graftRange[0].toLocaleString()}–${graftRange[1].toLocaleString()} grafts`,
+        stage === 'VI' || stage === 'VII' || ludwigAdv ? 'FUE/FUT hybrid technique recommended for maximum donor yield' : 'FUE, FUT, or both depending on donor density assessment',
+        'PRP and ACell incorporated into the surgical protocol for accelerated healing',
+        'Post-procedure maintenance to preserve donor area and native hair',
+      ];
+      sessionsText = (stage === 'VI' || stage === 'VII' || ludwigAdv) ? '1–2 surgical sessions, possibly staged' : '1 surgical session typical';
+    } else {
+      // Fallback (e.g., Stage I with non-default goals)
+      pathTitle = 'Preventive monitoring';
+      pathBody = 'You are at a baseline or near-baseline stage with no immediate intervention indicated. The most useful next step is establishing a baseline assessment — including donor density evaluation — so any future change can be detected and addressed early.';
+      pathBullets = [
+        'Baseline trichoscopy and donor area documentation',
+        'Optional: low-dose Finasteride if family history is strong and you want to be preventive',
+        'Annual reassessment',
+      ];
+      sessionsText = 'No surgery indicated';
+    }
+
+    // --- Family history modifier (text addendum) ---
+    let familyAddendum = '';
+    if (family === 'strong' && (earlyStage || ludwigEarly)) {
+      familyAddendum = 'Strong family history adds urgency to early intervention — preventive non-surgical protocols are most effective in the years before significant loss appears.';
+    }
+
+    return { stageName, graftRange, costRange, pathTitle, pathBody, pathBullets, sessionsText, familyAddendum, isMale, stage };
+  }
+
+  function renderResults(){
+    const r = compute();
+    const stageVisual = r.isMale ? norwoodSVG(r.stage) : ludwigSVG(r.stage);
+    const graftDisplay = r.graftRange[1] > 0
+      ? `${r.graftRange[0].toLocaleString()} <small>—</small> ${r.graftRange[1].toLocaleString()}`
+      : `<i>—</i>`;
+    const costDisplay = r.costRange || `<i>n/a</i>`;
+
+    document.getElementById('resultBox').innerHTML = `
+      <div class="result-head">
+        <div style="display:flex;justify-content:center;margin-bottom:24px;color:var(--ember)">
+          <div style="width:96px;height:96px">${stageVisual}</div>
+        </div>
+        <div class="badge">★ YOUR ASSESSMENT</div>
+        <h2>${r.stageName.split(' — ')[0]} <i>${r.stageName.split(' — ')[1] || ''}</i></h2>
+        <p class="sub-result">Based on the pattern, age, family history, progression, and goals you entered.</p>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <span class="key">// EST. GRAFT COUNT</span>
+          <div class="v">${graftDisplay}</div>
+          <p>Estimated graft count if surgical restoration is part of your treatment plan. Verified at consultation through donor area assessment.</p>
+        </div>
+        <div class="result-card">
+          <span class="key">// EST. INVESTMENT</span>
+          <div class="v">${costDisplay}</div>
+          <p>Estimated total cost range based on graft count. Final pricing provided in writing at consultation — no hidden fees.</p>
+        </div>
+      </div>
+
+      <div class="result-prose">
+        <span class="key">// RECOMMENDED PATH</span>
+        <h3>${r.pathTitle}</h3>
+        <p>${r.pathBody}</p>
+        <ul>${r.pathBullets.map(b => `<li>${b}</li>`).join('')}</ul>
+        ${r.familyAddendum ? `<p style="margin-top:18px;font-style:italic;color:var(--ember)">${r.familyAddendum}</p>` : ''}
+        <p style="margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral)">// SESSIONS · ${r.sessionsText}</p>
+      </div>
+
+      <div style="text-align:center;margin:32px 0">
+        <a href="../book.html?tool=assessment&stage=${encodeURIComponent(r.stageName)}&grafts=${r.graftRange[1] > 0 ? r.graftRange[0].toLocaleString() + '-' + r.graftRange[1].toLocaleString() : 'n/a'}&cost=${encodeURIComponent(r.costRange || 'n/a')}&path=${encodeURIComponent(r.pathTitle)}" class="btn btn-primary btn-large">Book Free Consultation <span class="arr">→</span></a>
+        <div style="margin-top:14px"><a href="../dr-katona.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)">Or read about Dr. Katona →</a></div>
+      </div>
+
+      <div class="tool-disclaimer">
+        — This assessment is informational and does not replace clinical evaluation. Final recommendations require in-person or virtual consultation with Dr. Katona, including donor area trichoscopy and medical history review. Pricing is an estimate based on typical case parameters.
+      </div>
+    `;
+  }
+
+})();
+</script>
+</body>
+</html>

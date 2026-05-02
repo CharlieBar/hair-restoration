@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Patient Tools | Katona Hair Restoration · Essence MedSpa</title>
+<meta name="description" content="Free interactive tools to help you understand your hair loss stage, estimate graft count and treatment cost, and choose the right path. Built by Dr. Arthur Katona.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1200px;margin:0 auto;padding:0 32px}
+  .tool-card{
+    display:block;text-decoration:none;color:var(--ink);
+    background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:24px;
+    padding:48px;transition:.4s;position:relative;overflow:hidden;
+    min-height:480px;display:flex;flex-direction:column;
+  }
+  .tool-card::before{
+    content:"";position:absolute;left:0;top:0;width:0;height:2px;background:var(--coral);transition:.4s;
+  }
+  .tool-card:hover::before{width:100%}
+  .tool-card:hover{transform:translateY(-6px);border-color:var(--coral);box-shadow:0 24px 60px rgba(255,90,54,.18)}
+  .tool-card .icon-box{
+    width:80px;height:80px;border-radius:20px;
+    background:var(--coral-soft);border:1px solid var(--line-coral);
+    display:flex;align-items:center;justify-content:center;color:var(--coral);
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:48px;
+    margin-bottom:32px;letter-spacing:-.04em;
+  }
+  .tool-card .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);margin-bottom:14px;display:block}
+  .tool-card h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:42px;line-height:1.05;letter-spacing:-.018em;color:var(--ink);margin-bottom:18px}
+  .tool-card h3 i{font-style:italic;color:var(--ember)}
+  .tool-card p{font-size:16px;line-height:1.65;color:var(--ink-mute);font-weight:300;margin-bottom:24px;flex:1}
+  .tool-card ul{list-style:none;margin-bottom:32px}
+  .tool-card ul li{padding-left:20px;position:relative;font-size:14px;line-height:1.55;color:var(--ink);font-weight:300;margin-bottom:8px}
+  .tool-card ul li::before{content:"+";color:var(--coral);position:absolute;left:0;font-weight:700}
+  .tool-card .meta{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);padding-top:24px;border-top:1px solid var(--line);margin-bottom:24px}
+  .tool-card .meta b{color:var(--ember);font-weight:500}
+  .tool-card .launch{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--coral);color:#fff;padding:14px 24px;border-radius:999px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    transition:.3s;align-self:flex-start;
+  }
+  .tool-card:hover .launch{background:var(--ember);color:#08201c}
+
+  .tools-grid.three{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:1100px){.tools-grid.three{grid-template-columns:1fr}}
+  @media (max-width:780px){.tools-grid{grid-template-columns:1fr}}
+</style>
+<script>(function(){try{const t=localStorage.getItem('katona-theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(_){document.documentElement.dataset.theme='dark';}})();</script>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="left">
+    <a href="../dr-katona.html">Dr. Katona</a>
+    <a href="../hair-transplant.html">Transplant</a>
+    <a href="../hair-restoration.html">Restoration</a>
+    <a href="../advanced-aesthetics.html">Aesthetics</a>
+    <a href="index.html" class="active">Tools</a>
+    <a href="../blog/index.html">Journal</a>
+  </div>
+  <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+  <div class="right">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="../book.html" class="cta">Consultation →</a>
+  </div>
+</nav>
+
+<header class="section" style="padding-top:160px;padding-bottom:80px;text-align:center;border-bottom:1px solid var(--line);position:relative">
+  <div class="container-narrow reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:24px"><span class="dot"></span>PATIENT TOOLS · FREE · NO REGISTRATION</span>
+    <h1 class="display" style="font-size:clamp(60px,8.5vw,148px);margin-bottom:24px">Tools to <i class="ember">find</i> your<br>starting point<span class="end">.</span></h1>
+    <p class="lede" style="max-width:760px;margin:0 auto;font-size:24px">Self-assessments and calculators built by Dr. Katona — designed to give you a real answer before you walk into the consultation room.</p>
+  </div>
+</header>
+
+<div class="telemetry">
+  <div class="l"><span class="dot"></span><span>KATONA / TOOLS</span></div>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>FREE INTERACTIVE TOOLS</span><span class="div">/</span>
+      <span>HAIR LOSS ASSESSMENT</span><span class="div">/</span>
+      <span>COST + GRAFT CALCULATOR</span><span class="div">/</span>
+      <span>BUILT BY DR. KATONA · 27 YEARS · 20,000+ PROCEDURES</span><span class="div">/</span>
+      <span>FREE INTERACTIVE TOOLS</span><span class="div">/</span>
+      <span>HAIR LOSS ASSESSMENT</span><span class="div">/</span>
+      <span>COST + GRAFT CALCULATOR</span><span class="div">/</span>
+      <span>BUILT BY DR. KATONA · 27 YEARS · 20,000+ PROCEDURES</span><span class="div">/</span>
+    </div>
+  </div>
+  <div class="r mono">EDGEBROOK · CHICAGO</div>
+</div>
+
+
+<section class="section section-divided">
+  <div class="tools-grid three">
+    <a href="hair-assessment.html" class="tool-card reveal">
+      <div class="icon-box">i</div>
+      <span class="num">// TOOL 01 · ASSESSMENT</span>
+      <h3>Hair Loss <i>Self-Assessment</i></h3>
+      <p>A six-question walk through the Norwood and Ludwig scales. Identify your stage, get a personalized treatment recommendation, plus an estimated graft count and cost range.</p>
+      <ul>
+        <li>Visual Norwood / Ludwig selector</li>
+        <li>Surgical / non-surgical / combination recommendation</li>
+        <li>Estimated graft count + investment range</li>
+      </ul>
+      <div class="meta"><span>STEPS · 6</span><b>~ 90 SEC</b></div>
+      <span class="launch">Begin <span class="arr">→</span></span>
+    </a>
+
+    <a href="cost-calculator.html" class="tool-card reveal reveal-d-1">
+      <div class="icon-box">ii</div>
+      <span class="num">// TOOL 02 · CALCULATOR</span>
+      <h3>Cost & Graft <i>Calculator</i></h3>
+      <p>Pick the areas you want restored, your hair characteristics, and preferred technique — get a graft count, technique recommendation, and full price breakdown.</p>
+      <ul>
+        <li>Multi-area selector (hairline, crown, etc.)</li>
+        <li>FUE vs FUT vs hybrid recommendation</li>
+        <li>Detailed cost breakdown by graft count</li>
+      </ul>
+      <div class="meta"><span>INPUTS · 5</span><b>~ 60 SEC</b></div>
+      <span class="launch">Open <span class="arr">→</span></span>
+    </a>
+
+    <a href="treatment-comparison.html" class="tool-card reveal reveal-d-2">
+      <div class="icon-box">iii</div>
+      <span class="num">// TOOL 03 · COMPARISON</span>
+      <h3>Treatment <i>Comparison</i></h3>
+      <p>Compare seven hair restoration options live — FUE, FUT, Hybrid, PRP, SMP, LLLT, Medical. Pick what matters most and see them re-rank in real time.</p>
+      <ul>
+        <li>Six priority dimensions (cost, scarring, etc.)</li>
+        <li>Live scoring matrix across 7 treatments</li>
+        <li>Honest ranking — no surgeon bias</li>
+      </ul>
+      <div class="meta"><span>OPTIONS · 7</span><b>~ 30 SEC</b></div>
+      <span class="launch">Compare <span class="arr">→</span></span>
+    </a>
+  </div>
+</section>
+
+<section class="section section-divided">
+  <div class="container-narrow reveal" style="text-align:center">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:20px"><span class="dot"></span>WHY THESE TOOLS EXIST</span>
+    <h2 class="display" style="font-size:clamp(40px,5.5vw,80px);margin-bottom:18px">Knowing the answer <i>before</i> you ask the question.</h2>
+    <p class="lede" style="max-width:760px;margin:0 auto 32px;font-size:20px">Most patients arrive at consultation with vague awareness of their hair loss and zero framework for thinking about treatment. These tools give you the framework — so the consultation becomes a conversation about <em style="color:var(--ember);font-style:italic;font-family:'Cormorant Garamond',serif">your specific case</em>, not a primer on what hair loss is.</p>
+    <a href="../book.html" class="btn btn-outline">Skip the tools — Book directly <span class="arr">→</span></a>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="grid">
+    <div>
+      <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+      <p class="tagline">27 years. 20,000+ procedures. One surgeon — at Essence MedSpa, Edgebrook.</p>
+      <address>5418 W. Devon Avenue<br>Edgebrook, Chicago, IL 60646<br><a href="tel:+1773XXXXXXX">(773) XXX-XXXX</a><br><a href="mailto:consult@essencemedspachicago.com">consult@essencemedspachicago.com</a></address>
+    </div>
+    <div><h5>— Services</h5><ul>
+      <li><a href="../hair-transplant.html">Hair Transplant</a></li>
+      <li><a href="../hair-restoration.html">Hair Restoration</a></li>
+      <li><a href="../advanced-aesthetics.html">Advanced Aesthetics</a></li>
+      <li><a href="../dr-katona.html">About Dr. Katona</a></li>
+      <li><a href="index.html">Tools</a></li>
+      <li><a href="../blog/index.html">Journal</a></li>
+    </ul></div>
+    <div><h5>— Hours</h5><ul>
+      <li>Mon — Thu &nbsp; 9:00 — 7:00</li>
+      <li>Friday &nbsp; 9:00 — 6:00</li>
+      <li>Saturday &nbsp; 10:00 — 4:00</li>
+      <li>Sunday &nbsp; Closed</li>
+    </ul></div>
+    <div><h5>— Connect</h5><ul>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Google Reviews · 4.9 ★</a></li>
+      <li><a href="../book.html">Book Consultation →</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Katona Hair Restoration at Essence MedSpa & Wellness Center · Edgebrook, Chicago</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Compliance</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

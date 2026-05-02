@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cost & Graft Calculator | Katona Hair Restoration · Essence MedSpa</title>
+<meta name="description" content="A free hair transplant cost & graft calculator by Dr. Arthur Katona. Pick the areas you want restored, your hair characteristics, and preferred technique — get a graft count estimate, technique recommendation, and full price breakdown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  /* Calculator-specific layout: 2-column with sticky output */
+  .calc-shell{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:32px;
+    max-width:1400px;margin:0 auto;padding:0 32px;
+    align-items:start;
+  }
+  .calc-input{
+    background:var(--glass);backdrop-filter:blur(14px);
+    border:1px solid var(--line);border-radius:24px;padding:36px;
+  }
+  .calc-output{
+    background:var(--glass-2);backdrop-filter:blur(20px);
+    border:1px solid var(--line-strong);border-radius:24px;padding:36px;
+    position:sticky;top:120px;
+    box-shadow:var(--shadow-lg);
+  }
+  .calc-section{margin-bottom:36px}
+  .calc-section:last-child{margin-bottom:0}
+  .calc-section h3{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--coral);margin-bottom:6px;
+  }
+  .calc-section .hint{
+    font-size:13px;color:var(--ink-mute);margin-bottom:20px;font-weight:300;line-height:1.5;
+  }
+
+  /* Pill button group */
+  .pill-group{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{
+    padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);
+    background:var(--glass-soft);color:var(--ink);cursor:pointer;transition:.2s;
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:500;
+  }
+  .pill:hover{border-color:var(--coral)}
+  .pill.on{background:var(--coral);color:#fff;border-color:var(--coral);box-shadow:0 0 0 3px rgba(255,90,54,.18)}
+
+  /* Output styles */
+  .calc-output .out-label{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--coral);display:block;margin-bottom:14px;
+  }
+  .calc-output .grafts{
+    font-family:'Cormorant Garamond',serif;font-weight:300;font-size:84px;line-height:1;letter-spacing:-.025em;
+    color:var(--ink);margin-bottom:8px;
+  }
+  .calc-output .grafts i{font-style:italic;color:var(--ember)}
+  .calc-output .grafts small{font-size:.4em;color:var(--ink-soft);font-weight:300;margin-left:6px}
+  .calc-output .grafts-sub{font-size:14px;color:var(--ink-mute);margin-bottom:32px;font-weight:300}
+
+  .calc-output .price{
+    font-family:'Cormorant Garamond',serif;font-weight:300;font-size:64px;line-height:1;letter-spacing:-.025em;
+    color:var(--ink);margin-bottom:8px;
+  }
+  .calc-output .price i{font-style:italic;color:var(--coral)}
+  .calc-output .price small{font-size:.4em;color:var(--ink-soft);font-weight:300}
+  .calc-output .price-sub{font-size:13px;color:var(--ink-mute);margin-bottom:32px;font-weight:300;line-height:1.5}
+
+  /* Stat strip in output */
+  .out-stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    margin:24px 0;
+  }
+  .out-stats .s{padding:18px 0;border-right:1px solid var(--line)}
+  .out-stats .s:last-child{border-right:none;padding-left:18px}
+  .out-stats .s .k{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+  .out-stats .s .v{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;letter-spacing:-.015em;color:var(--ink)}
+  .out-stats .s .v i{font-style:italic;color:var(--ember)}
+
+  .out-recommend{
+    background:var(--coral-soft);border:1px solid var(--line-coral);border-radius:14px;padding:20px;margin-bottom:24px;
+  }
+  .out-recommend .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:10px;display:block}
+  .out-recommend .h{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:24px;color:var(--ink);line-height:1.15;margin-bottom:8px;letter-spacing:-.012em}
+  .out-recommend p{font-size:13px;line-height:1.55;color:var(--ink-mute);font-weight:300}
+
+  .empty-state{text-align:center;color:var(--ink-mute);padding:48px 0;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px}
+
+  @media (max-width:980px){
+    .calc-shell{grid-template-columns:1fr}
+    .calc-output{position:static}
+  }
+</style>
+<script>(function(){try{const t=localStorage.getItem('katona-theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(_){document.documentElement.dataset.theme='dark';}})();</script>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="left">
+    <a href="../dr-katona.html">Dr. Katona</a>
+    <a href="../hair-transplant.html">Transplant</a>
+    <a href="../hair-restoration.html">Restoration</a>
+    <a href="../advanced-aesthetics.html">Aesthetics</a>
+    <a href="index.html" class="active">Tools</a>
+    <a href="../blog/index.html">Journal</a>
+  </div>
+  <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+  <div class="right">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="../book.html" class="cta">Consultation →</a>
+  </div>
+</nav>
+
+<header style="padding:140px 32px 60px;text-align:center;border-bottom:1px solid var(--line);position:relative">
+  <div class="container-narrow reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:24px"><span class="dot"></span>TOOL 02 · COST + GRAFT CALCULATOR</span>
+    <h1 class="display" style="font-size:clamp(48px,7vw,108px);margin-bottom:20px">A real <i class="ember">number</i>, not a brochure<span class="end">.</span></h1>
+    <p class="lede" style="max-width:680px;margin:0 auto;font-size:20px">Pick the areas you want restored, describe your hair, and choose a technique preference. The calculator updates live.</p>
+  </div>
+</header>
+
+<div class="telemetry">
+  <div class="l"><span class="dot"></span><span>KATONA / TOOLS · CALCULATOR</span></div>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>FREE COST + GRAFT ESTIMATOR</span><span class="div">/</span>
+      <span>LIVE CALCULATION</span><span class="div">/</span>
+      <span>TRANSPARENT PRICING</span><span class="div">/</span>
+      <span>FUE · FUT · HYBRID</span><span class="div">/</span>
+      <span>BUILT BY DR. KATONA · 27 YEARS · 20,000+ PROCEDURES</span><span class="div">/</span>
+      <span>FREE COST + GRAFT ESTIMATOR</span><span class="div">/</span>
+      <span>LIVE CALCULATION</span><span class="div">/</span>
+      <span>TRANSPARENT PRICING</span><span class="div">/</span>
+    </div>
+  </div>
+  <div class="r mono">EDGEBROOK · CHICAGO</div>
+</div>
+
+
+<main style="padding:60px 0 100px;position:relative">
+
+  <div class="calc-shell">
+
+    <!-- INPUT PANEL -->
+    <section class="calc-input">
+
+      <!-- AREA SELECTOR -->
+      <div class="calc-section">
+        <h3>// 01_AREAS TO RESTORE</h3>
+        <p class="hint">Multi-select. Each area's typical graft range is shown beside it.</p>
+        <div class="tool-toggles" id="areaToggles">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- HAIR CHARACTERISTICS -->
+      <div class="calc-section">
+        <h3>// 02_HAIR COLOR CONTRAST</h3>
+        <p class="hint">Higher contrast (dark hair on light scalp) requires more grafts to look dense.</p>
+        <div class="pill-group" data-key="contrast">
+          <button class="pill" data-val="low">Low contrast</button>
+          <button class="pill on" data-val="medium">Medium</button>
+          <button class="pill" data-val="high">High contrast</button>
+        </div>
+      </div>
+
+      <div class="calc-section">
+        <h3>// 03_HAIR THICKNESS</h3>
+        <p class="hint">Coarser hair provides more visual density per graft.</p>
+        <div class="pill-group" data-key="thickness">
+          <button class="pill" data-val="fine">Fine</button>
+          <button class="pill on" data-val="medium">Medium</button>
+          <button class="pill" data-val="coarse">Coarse</button>
+        </div>
+      </div>
+
+      <div class="calc-section">
+        <h3>// 04_HAIR TYPE</h3>
+        <p class="hint">Curly hair covers more scalp per graft than straight hair.</p>
+        <div class="pill-group" data-key="type">
+          <button class="pill on" data-val="straight">Straight</button>
+          <button class="pill" data-val="wavy">Wavy</button>
+          <button class="pill" data-val="curly">Curly</button>
+          <button class="pill" data-val="afro">Afro-textured</button>
+        </div>
+      </div>
+
+      <!-- TECHNIQUE PREFERENCE -->
+      <div class="calc-section">
+        <h3>// 05_TECHNIQUE PREFERENCE</h3>
+        <p class="hint">Or let the calculator recommend the best technique for your case.</p>
+        <div class="pill-group" data-key="technique">
+          <button class="pill on" data-val="auto">Recommend</button>
+          <button class="pill" data-val="fue">FUE only</button>
+          <button class="pill" data-val="fut">FUT only</button>
+          <button class="pill" data-val="hybrid">Hybrid</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- OUTPUT PANEL -->
+    <aside class="calc-output" id="calcOutput">
+      <div class="empty-state">Select at least one area to begin.</div>
+    </aside>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="tool-disclaimer" style="margin-top:60px">
+    — This calculator provides an informational estimate based on typical case parameters. Final graft count and pricing are determined at consultation through clinical evaluation including donor area trichoscopy. Pricing assumes single-surgeon, single-patient-per-day standards used at Essence MedSpa.
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="grid">
+    <div>
+      <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+      <p class="tagline">27 years. 20,000+ procedures. One surgeon — at Essence MedSpa, Edgebrook.</p>
+      <address>5418 W. Devon Avenue<br>Edgebrook, Chicago, IL 60646<br><a href="tel:+1773XXXXXXX">(773) XXX-XXXX</a><br><a href="mailto:consult@essencemedspachicago.com">consult@essencemedspachicago.com</a></address>
+    </div>
+    <div><h5>— Services</h5><ul>
+      <li><a href="../hair-transplant.html">Hair Transplant</a></li>
+      <li><a href="../hair-restoration.html">Hair Restoration</a></li>
+      <li><a href="../advanced-aesthetics.html">Advanced Aesthetics</a></li>
+      <li><a href="../dr-katona.html">About Dr. Katona</a></li>
+      <li><a href="index.html">Tools</a></li>
+      <li><a href="../blog/index.html">Journal</a></li>
+    </ul></div>
+    <div><h5>— Hours</h5><ul>
+      <li>Mon — Thu &nbsp; 9:00 — 7:00</li>
+      <li>Friday &nbsp; 9:00 — 6:00</li>
+      <li>Saturday &nbsp; 10:00 — 4:00</li>
+      <li>Sunday &nbsp; Closed</li>
+    </ul></div>
+    <div><h5>— Connect</h5><ul>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Google Reviews · 4.9 ★</a></li>
+      <li><a href="../book.html">Book Consultation →</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Katona Hair Restoration at Essence MedSpa & Wellness Center · Edgebrook, Chicago</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Compliance</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+/* ========================================================================
+   COST & GRAFT CALCULATOR — Live recommendation engine
+   ======================================================================== */
+(() => {
+  // Per-area graft ranges (low, mid, high)
+  const areas = [
+    { id:'hairline',  name:'Hairline',          range:[300,  700],  desc:'400–600 grafts typical' },
+    { id:'frontal',   name:'Frontal / Forelock', range:[700, 1500], desc:'700–1500 grafts typical' },
+    { id:'midscalp',  name:'Mid-scalp',          range:[500, 1200], desc:'500–1200 grafts typical' },
+    { id:'crown',     name:'Crown / Vertex',     range:[1000,2200], desc:'1000–2200 grafts typical' },
+    { id:'temples',   name:'Temples',            range:[200, 500],  desc:'200–500 grafts typical' },
+    { id:'beard',     name:'Beard / Goatee',     range:[700, 2000], desc:'700–2000 grafts typical' },
+    { id:'eyebrows',  name:'Eyebrows',           range:[200, 400],  desc:'200–400 grafts per brow' },
+    { id:'scar',      name:'Scar / Repair',      range:[300, 1000], desc:'300–1000 grafts typical' },
+  ];
+
+  const state = {
+    areas: new Set(),
+    contrast: 'medium',
+    thickness: 'medium',
+    type: 'straight',
+    technique: 'auto',
+  };
+
+  // Build area toggles
+  const togglesEl = document.getElementById('areaToggles');
+  togglesEl.innerHTML = areas.map(a => `
+    <button class="tool-toggle" data-area="${a.id}">
+      <span class="check">✓</span>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+        <span class="label-text">${a.name}</span>
+        <span class="grafts">${a.desc}</span>
+      </div>
+    </button>
+  `).join('');
+
+  // Event delegation
+  document.addEventListener('click', e => {
+    const toggle = e.target.closest('.tool-toggle');
+    if (toggle) {
+      const id = toggle.dataset.area;
+      if (state.areas.has(id)) { state.areas.delete(id); toggle.classList.remove('on'); }
+      else { state.areas.add(id); toggle.classList.add('on'); }
+      compute();
+    }
+    const pill = e.target.closest('.pill');
+    if (pill) {
+      const group = pill.parentElement;
+      const key = group.dataset.key;
+      group.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
+      pill.classList.add('on');
+      state[key] = pill.dataset.val;
+      compute();
+    }
+  });
+
+  // ---------- COMPUTATION ----------
+  function compute(){
+    const out = document.getElementById('calcOutput');
+    if (state.areas.size === 0) {
+      out.innerHTML = `<div class="empty-state">Select at least one area to begin.</div>`;
+      return;
+    }
+
+    // 1. Sum graft ranges across selected areas
+    let lowGrafts = 0, highGrafts = 0;
+    state.areas.forEach(id => {
+      const a = areas.find(x => x.id === id);
+      lowGrafts += a.range[0];
+      highGrafts += a.range[1];
+    });
+
+    // 2. Hair characteristic modifiers
+    // contrast: high → +10% (need more density visually), low → -8%
+    const contrastMod = { low: 0.92, medium: 1.0, high: 1.10 }[state.contrast];
+    // thickness: fine → +12%, coarse → -10%
+    const thicknessMod = { fine: 1.12, medium: 1.0, coarse: 0.90 }[state.thickness];
+    // type: straight → 1.0, wavy → -3%, curly → -8%, afro → -12% (curly covers more)
+    const typeMod = { straight: 1.0, wavy: 0.97, curly: 0.92, afro: 0.88 }[state.type];
+
+    const totalMod = contrastMod * thicknessMod * typeMod;
+    lowGrafts = Math.round(lowGrafts * totalMod);
+    highGrafts = Math.round(highGrafts * totalMod);
+
+    // Round to nearest 100 for cleanness
+    const roundTo = (n, step) => Math.round(n / step) * step;
+    lowGrafts = roundTo(lowGrafts, 100);
+    highGrafts = roundTo(highGrafts, 100);
+
+    // 3. Technique selection / recommendation
+    let technique = state.technique;
+    let techRationale = '';
+    const totalGraftsAvg = (lowGrafts + highGrafts) / 2;
+    if (technique === 'auto') {
+      if (totalGraftsAvg <= 2200 || state.areas.has('eyebrows') || state.areas.has('beard')) {
+        technique = 'fue';
+        techRationale = state.areas.has('eyebrows') || state.areas.has('beard')
+          ? 'FUE recommended — facial hair restoration requires individual follicle precision.'
+          : 'FUE recommended — your graft range fits comfortably in a single FUE session, with no linear scar.';
+      } else if (totalGraftsAvg <= 4500) {
+        technique = 'fut';
+        techRationale = 'FUT recommended — your graft range yields better results in a single session, with the linear scar fully concealable.';
+      } else {
+        technique = 'hybrid';
+        techRationale = 'FUE/FUT hybrid recommended — your case requires maximum graft yield in a single surgical day, drawing from both donor zones.';
+      }
+    } else {
+      techRationale = ({
+        fue: 'FUE — individual follicles extracted with no linear scar. Suitable for any hairstyle.',
+        fut: 'FUT — strip technique yields more grafts per session at lower cost. Linear scar concealable by surrounding hair.',
+        hybrid: 'Hybrid — combines FUE + FUT in one session for maximum graft yield. Reserved for advanced cases.',
+      })[technique];
+    }
+
+    // 4. Cost per graft
+    const pricePerGraft = { fue: { low: 6, high: 8 }, fut: { low: 5, high: 7 }, hybrid: { low: 6, high: 8 } }[technique];
+    const lowCost = lowGrafts * pricePerGraft.low;
+    const highCost = highGrafts * pricePerGraft.high;
+
+    // Apply session minimums (Essence pricing floor)
+    const lowCostClean = Math.max(6000, lowCost);
+    const highCostClean = highCost;
+
+    // 5. Sessions estimate
+    const maxPerSession = { fue: 3500, fut: 4500, hybrid: 5500 }[technique];
+    const lowSessions = Math.max(1, Math.ceil(lowGrafts / maxPerSession));
+    const highSessions = Math.max(1, Math.ceil(highGrafts / maxPerSession));
+    const sessionsText = lowSessions === highSessions ? `${lowSessions} session${lowSessions > 1 ? 's' : ''}` : `${lowSessions} — ${highSessions} sessions`;
+
+    // 6. Procedure duration
+    const hoursPerSession = { fue: '4 — 8 h', fut: '5 — 8 h', hybrid: '6 — 10 h' }[technique];
+
+    // 7. Recovery days
+    const recoveryText = { fue: '5 — 7 days', fut: '10 — 14 days', hybrid: '7 — 12 days' }[technique];
+
+    // Format helpers
+    const fmtMoney = n => '$' + (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k';
+
+    // Render output
+    out.innerHTML = `
+      <span class="out-label">// EST. GRAFT COUNT</span>
+      <div class="grafts">${lowGrafts.toLocaleString()} <small>—</small> ${highGrafts.toLocaleString()}</div>
+      <div class="grafts-sub">grafts across ${state.areas.size} area${state.areas.size > 1 ? 's' : ''} · adjusted for hair characteristics</div>
+
+      <div class="out-recommend">
+        <span class="k">// RECOMMENDED · ${technique.toUpperCase()}</span>
+        <div class="h">${({fue:'FUE — Follicular Unit Extraction', fut:'FUT — Strip Technique', hybrid:'FUE/FUT Hybrid'})[technique]}</div>
+        <p>${techRationale}</p>
+      </div>
+
+      <span class="out-label">// EST. INVESTMENT</span>
+      <div class="price">${fmtMoney(lowCostClean)} <small>—</small> ${fmtMoney(highCostClean)}</div>
+      <div class="price-sub">Total range across ${sessionsText}. At Essence: $${pricePerGraft.low}–${pricePerGraft.high} per graft, single-patient-per-day surgical standard, performed personally by Dr. Katona.</div>
+
+      <div class="out-stats">
+        <div class="s"><div class="k">// SESSIONS</div><div class="v"><i>${sessionsText}</i></div></div>
+        <div class="s"><div class="k">// PER SESSION</div><div class="v"><i>${hoursPerSession}</i></div></div>
+        <div class="s"><div class="k">// RECOVERY</div><div class="v"><i>${recoveryText}</i></div></div>
+        <div class="s"><div class="k">// FINAL RESULT</div><div class="v"><i>12 mo</i></div></div>
+      </div>
+
+      <a href="../book.html?tool=calculator&grafts=${lowGrafts.toLocaleString()}-${highGrafts.toLocaleString()}&technique=${technique}&cost=${encodeURIComponent(fmtMoney(lowCostClean) + '-' + fmtMoney(highCostClean))}&areas=${encodeURIComponent(Array.from(state.areas).join(','))}" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px">Book Free Consultation <span class="arr">→</span></a>
+      <p style="text-align:center;font-size:12px;color:var(--ink-soft);margin-top:14px;line-height:1.5;font-weight:300">
+        Financing available. Get a precise written quote at consultation — no hidden fees.
+      </p>
+    `;
+  }
+})();
+</script>
+</body>
+</html>

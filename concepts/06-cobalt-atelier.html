@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>06 — Emerald Atelier · Katona Hair Restoration Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08201c;
+    --bg-2:#04110f;
+    --bg-3:#0d2c27;
+    --emerald:#1f5b4f;
+    --emerald-deep:#0a2620;
+    --bone:#f3eee2;
+    --bone-2:#e3ddcd;
+    --coral:#ff5a36;
+    --coral-2:#e2421e;
+    --ember:#ffb24a;
+    --ember-2:#ff8a1c;
+    --line:rgba(243,238,226,.12);
+    --line-2:rgba(255,90,54,.28);
+    --glass:rgba(8,32,28,.55);
+    --glass-2:rgba(8,32,28,.78);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bg);color:var(--bone);font-family:'Inter',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:200;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.85  0 0 0 0 0.7  0 0 0 0.12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:.5;mix-blend-mode:overlay;
+  }
+  .serif{font-family:'Cormorant Garamond',serif}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+
+  /* ---------- TELEMETRY (very thin, top) ---------- */
+  .telemetry{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;
+    padding:10px 24px;
+    background:rgba(4,17,15,.72);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .telemetry .l{display:flex;gap:18px;align-items:center}
+  .telemetry .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 12px var(--coral);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .telemetry .ticker{display:flex;gap:32px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);color:var(--bone);opacity:.7}
+  .telemetry .ticker-track{display:flex;gap:32px;animation:slide 32s linear infinite}
+  .telemetry .ticker-track .div{color:var(--coral)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .telemetry .r{display:flex;gap:18px;justify-content:flex-end;align-items:center;color:var(--ember)}
+
+  /* ---------- NAV ---------- */
+  nav.bar{
+    position:fixed;top:34px;left:0;right:0;z-index:49;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:18px 40px;
+    background:linear-gradient(to bottom,rgba(4,17,15,.6),rgba(4,17,15,0));
+    backdrop-filter:blur(8px);
+  }
+  nav .left,nav .right{display:flex;gap:28px;align-items:center}
+  nav .right{justify-content:flex-end}
+  nav .brand{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-size:30px;letter-spacing:.02em;color:var(--bone);position:relative;
+  }
+  nav .brand sup{font-family:'JetBrains Mono',monospace;font-style:normal;font-weight:400;font-size:9px;color:var(--coral);letter-spacing:.22em;vertical-align:top;margin-left:4px}
+  nav a{color:var(--bone);text-decoration:none;opacity:.7;font-size:11px;letter-spacing:.24em;text-transform:uppercase;transition:.2s}
+  nav a:hover{opacity:1;color:var(--ember)}
+  nav .cta{
+    border:1px solid var(--coral);padding:10px 20px;color:var(--coral);font-weight:500;border-radius:999px;
+    transition:.3s;
+  }
+  nav .cta:hover{background:var(--coral);color:var(--bone);box-shadow:0 0 24px rgba(255,90,54,.45);opacity:1}
+
+  /* ---------- HERO (full bleed cinematic) ---------- */
+  .hero{
+    position:relative;min-height:100vh;
+    padding:120px 40px 32px;
+    display:grid;grid-template-rows:1fr auto;gap:40px;
+    overflow:hidden;
+  }
+  /* Background macro photo (image 1) with emerald grading */
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(80% 60% at 75% 35%, rgba(255,178,74,.22), transparent 60%),
+      radial-gradient(60% 60% at 100% 50%, rgba(255,90,54,.18), transparent 60%),
+      url('../images/image%20(1).jpeg') no-repeat center/cover;
+    filter:contrast(1.18) saturate(1.35) brightness(.85);
+    z-index:-3;
+  }
+  /* Emerald color grading overlay */
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(8,32,28,.45) 0%, rgba(8,32,28,.65) 60%, rgba(4,17,15,.95) 100%),
+      linear-gradient(120deg, rgba(8,32,28,.7) 0%, transparent 55%);
+    z-index:-2;
+  }
+
+  /* Hero grid */
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:end;
+    max-width:1600px;margin:auto;width:100%;
+  }
+
+  /* Left column */
+  .h-eyebrow{
+    display:inline-flex;gap:14px;align-items:center;
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--coral);margin-bottom:36px;
+  }
+  .h-eyebrow .d{width:6px;height:6px;background:var(--coral);border-radius:50%;box-shadow:0 0 12px var(--coral)}
+  .h-eyebrow b{color:var(--bone);font-weight:400;opacity:.8}
+
+  .h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:clamp(72px,9.5vw,168px);
+    line-height:.88;
+    letter-spacing:-.024em;
+    margin-bottom:36px;
+  }
+  .h1 i{font-style:italic}
+  .h1 b{font-weight:600}
+  .h1 .ember{color:var(--ember);font-style:italic;font-weight:400;text-shadow:0 0 40px rgba(255,178,74,.35)}
+  .h1 .end{color:var(--coral)}
+
+  .h-sub{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:300;font-size:24px;line-height:1.45;
+    color:rgba(243,238,226,.78);
+    max-width:580px;margin-bottom:44px;
+  }
+
+  .ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:18px 30px;
+    font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    text-decoration:none;transition:.3s;border:1px solid transparent;border-radius:999px;
+    font-family:'Inter',sans-serif;
+  }
+  .btn-p{
+    background:var(--coral);color:var(--bone);
+    box-shadow:0 8px 32px rgba(255,90,54,.35);
+  }
+  .btn-p:hover{background:var(--ember);color:var(--bg-2);box-shadow:0 8px 40px rgba(255,178,74,.5);transform:translateY(-2px)}
+  .btn-g{color:var(--bone);border-color:rgba(243,238,226,.28);background:rgba(8,32,28,.4);backdrop-filter:blur(10px)}
+  .btn-g:hover{border-color:var(--ember);color:var(--ember)}
+  .btn .arr{transition:.3s}
+  .btn:hover .arr{transform:translateX(4px)}
+
+  /* Right column — floating glass credential card */
+  .h-cred{
+    background:var(--glass);backdrop-filter:blur(20px);
+    border:1px solid var(--line);
+    padding:32px;border-radius:20px;
+    box-shadow:0 30px 60px rgba(0,0,0,.45);
+    position:relative;overflow:hidden;
+  }
+  .h-cred::before{
+    content:"";position:absolute;left:0;top:0;width:60%;height:1px;background:var(--coral);
+  }
+  .h-cred .label{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--coral);margin-bottom:24px;display:flex;justify-content:space-between;
+  }
+  .h-cred .label b{color:var(--ember);font-weight:500}
+
+  .h-cred .name{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+    font-size:48px;line-height:1;letter-spacing:-.015em;margin-bottom:8px;color:var(--bone);
+  }
+  .h-cred .role{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(243,238,226,.6);margin-bottom:24px;
+  }
+  .h-cred-stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border-top:1px solid var(--line);padding-top:18px;
+  }
+  .h-cred-stats .c{padding-right:18px;border-right:1px solid var(--line)}
+  .h-cred-stats .c:last-child{border-right:none;padding-left:18px;padding-right:0}
+  .h-cred-stats .v{
+    font-family:'Cormorant Garamond',serif;font-weight:400;font-size:36px;line-height:1;letter-spacing:-.02em;
+    color:var(--bone);
+  }
+  .h-cred-stats .v i{font-style:italic;color:var(--ember)}
+  .h-cred-stats .l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,238,226,.55);margin-top:8px}
+
+  /* ---------- BOTTOM HERO STRIP — three feature blocks ---------- */
+  .h-strip{
+    max-width:1600px;margin:auto;width:100%;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    padding-top:32px;border-top:1px solid var(--line);
+  }
+  .h-block{
+    background:var(--glass);backdrop-filter:blur(16px);
+    border:1px solid var(--line);
+    padding:24px;border-radius:16px;
+    transition:.4s;cursor:pointer;
+    display:flex;align-items:center;gap:18px;position:relative;overflow:hidden;
+  }
+  .h-block::before{
+    content:"";position:absolute;left:0;top:0;width:0;height:100%;background:linear-gradient(120deg,rgba(255,90,54,.08),rgba(255,178,74,.08));transition:.4s;
+  }
+  .h-block:hover::before{width:100%}
+  .h-block:hover{border-color:var(--coral);box-shadow:0 12px 40px rgba(255,90,54,.18);transform:translateY(-2px)}
+  .h-block .icon{
+    width:48px;height:48px;border-radius:12px;
+    background:rgba(255,90,54,.12);border:1px solid rgba(255,90,54,.3);
+    display:flex;align-items:center;justify-content:center;color:var(--coral);
+    flex-shrink:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:500;
+    position:relative;z-index:1;
+  }
+  .h-block .body{position:relative;z-index:1;flex:1}
+  .h-block .body .t{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ember);margin-bottom:6px;
+  }
+  .h-block .body .h{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:22px;line-height:1.05;color:var(--bone);
+  }
+  .h-block .body .h b{font-weight:600;font-style:normal}
+  .h-block .arr{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--coral);position:relative;z-index:1;transition:.3s}
+  .h-block:hover .arr{transform:translateX(4px);color:var(--ember)}
+
+  /* ---------- SECTION SAMPLE ---------- */
+  section.preview{
+    padding:140px 32px;border-top:1px solid var(--line);position:relative;background:var(--bg-2);
+  }
+  section.preview::before{
+    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:1px;height:80px;background:var(--coral);
+  }
+  .sec-num{
+    text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--coral);margin-bottom:24px;
+    display:flex;align-items:center;justify-content:center;gap:14px;
+  }
+  .sec-num::before,.sec-num::after{content:"";width:48px;height:1px;background:var(--coral);opacity:.5}
+  .sec-h{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:clamp(48px,7vw,108px);line-height:.96;letter-spacing:-.018em;
+    max-width:1100px;margin:auto;text-align:center;
+  }
+  .sec-h i{font-style:italic;color:var(--ember)}
+  .sec-h b{font-weight:600}
+  .sec-h .accent{color:var(--coral)}
+
+  .cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px;
+    max-width:1480px;margin-inline:auto;
+  }
+  .card{
+    background:var(--glass);backdrop-filter:blur(16px);
+    border:1px solid var(--line);border-radius:20px;
+    padding:36px 32px;position:relative;cursor:pointer;transition:.4s;overflow:hidden;
+    min-height:340px;display:flex;flex-direction:column;
+  }
+  .card::after{
+    content:"";position:absolute;left:0;top:0;width:0;height:1px;background:var(--coral);transition:.5s;
+  }
+  .card:hover::after{width:100%}
+  .card:hover{border-color:var(--coral);background:rgba(8,32,28,.75);transform:translateY(-6px);box-shadow:0 20px 60px rgba(255,90,54,.2)}
+
+  .card .roman{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ember);
+    margin-bottom:8px;letter-spacing:.06em;
+  }
+  .card .num{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--coral);
+    margin-bottom:64px;text-transform:uppercase;display:block;
+  }
+  .card h3{
+    font-family:'Cormorant Garamond',serif;font-weight:300;font-size:42px;line-height:1.05;
+    letter-spacing:-.012em;margin-bottom:18px;color:var(--bone);
+  }
+  .card h3 i{font-style:italic;color:var(--ember)}
+  .card h3 b{font-weight:600}
+  .card p{font-size:14px;line-height:1.7;color:rgba(243,238,226,.65);margin-bottom:28px;font-weight:300;flex:1}
+  .card .arr{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--coral);font-weight:500;align-self:flex-start;
+  }
+  .card:hover .arr{color:var(--ember)}
+
+  /* ---------- SPEC PANEL ---------- */
+  .spec{
+    padding:96px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;
+    max-width:1480px;margin:auto;border-top:1px solid var(--line);background:var(--bg-2);
+  }
+  .spec h4{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--coral);margin-bottom:24px;
+  }
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .sw{aspect-ratio:1;border:1px solid var(--line);position:relative;border-radius:8px;overflow:hidden}
+  .sw span{position:absolute;bottom:6px;left:8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;mix-blend-mode:difference}
+  .typo .d{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:64px;line-height:1;letter-spacing:-.02em;color:var(--bone)}
+  .typo .d i{font-style:italic;color:var(--ember)}
+  .typo .d b{font-weight:600;color:var(--coral)}
+  .typo .b{font-size:14px;color:rgba(243,238,226,.65);margin-top:14px;font-weight:300}
+  .typo .m2{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--coral);margin-top:14px;letter-spacing:.22em}
+  .moods li{font-size:13px;color:rgba(243,238,226,.7);margin-bottom:12px;list-style:none;padding-left:20px;position:relative;font-weight:300}
+  .moods li::before{content:"+";color:var(--coral);position:absolute;left:0;font-weight:700}
+  .moods li.alt::before{content:"§";color:var(--ember)}
+
+  .back{
+    position:fixed;bottom:24px;left:24px;z-index:60;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--coral);text-decoration:none;border:1px solid var(--coral);padding:12px 18px;
+    background:rgba(4,17,15,.7);backdrop-filter:blur(10px);border-radius:999px;
+  }
+  .back:hover{background:var(--coral);color:var(--bone)}
+
+  @media(max-width:1100px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .h-strip{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .spec{grid-template-columns:1fr}
+    .telemetry .ticker{display:none}
+  }
+  @media(max-width:680px){
+    nav.bar .left{display:none}
+    nav.bar{grid-template-columns:1fr 1fr}
+    .hero{padding:100px 20px 24px}
+    .h1{font-size:64px}
+    .h-cred .name{font-size:36px}
+  }
+</style>
+</head>
+<body>
+
+<!-- TELEMETRY -->
+<div class="telemetry">
+  <div class="l"><span class="dot"></span><span>KATONA / SYS · LIVE</span></div>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>27 YEARS</span><span class="div">/</span>
+      <span>20,000+ PROCEDURES</span><span class="div">/</span>
+      <span>FUE PIONEER · 1996</span><span class="div">/</span>
+      <span>US + UK LICENSED</span><span class="div">/</span>
+      <span>2× ISHRS PLATINUM FOLLICLE NOMINEE</span><span class="div">/</span>
+      <span>FEATURED · CHICAGO TRIBUNE · ESPN · BBC · MODERN LUXURY</span><span class="div">/</span>
+      <span>27 YEARS</span><span class="div">/</span>
+      <span>20,000+ PROCEDURES</span><span class="div">/</span>
+      <span>FUE PIONEER · 1996</span><span class="div">/</span>
+      <span>US + UK LICENSED</span><span class="div">/</span>
+      <span>2× ISHRS PLATINUM FOLLICLE NOMINEE</span><span class="div">/</span>
+      <span>FEATURED · CHICAGO TRIBUNE · ESPN · BBC · MODERN LUXURY</span><span class="div">/</span>
+    </div>
+  </div>
+  <div class="r mono">EDGEBROOK · CHICAGO</div>
+</div>
+
+<!-- NAV -->
+<nav class="bar">
+  <div class="left">
+    <a href="#">Maison</a>
+    <a href="#">Atelier</a>
+    <a href="#">Journal</a>
+  </div>
+  <div class="brand">Katona<sup>®</sup></div>
+  <div class="right">
+    <a href="#">Hair Transplant</a>
+    <a href="#">Restoration</a>
+    <a href="#">Aesthetics</a>
+    <a href="#" class="cta">Consultation →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <!-- LEFT: editorial -->
+    <div>
+      <span class="h-eyebrow"><span class="d"></span>NOW · ESSENCE MEDSPA · <b>EDGEBROOK, CHICAGO</b></span>
+
+      <h1 class="h1">
+        Hair, <i class="ember">restored</i><br>
+        as a <i>discipline</i><span class="end">.</span>
+      </h1>
+
+      <p class="h-sub">A pioneer of Follicular Unit Extraction since 1996. Twenty-thousand procedures, twenty-seven years, two countries — every graft placed by one surgeon's hand.</p>
+
+      <div class="ctas">
+        <a href="#" class="btn btn-p">Book Consultation <span class="arr">→</span></a>
+        <a href="#" class="btn btn-g">Meet Dr. Katona <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- RIGHT: floating glass credential card -->
+    <div class="h-cred">
+      <div class="label"><span>// MEDICAL DIRECTOR</span><b>FILE · KAT_001</b></div>
+      <div class="name">Arthur Katona, M.D.</div>
+      <div class="role">FUE PIONEER · 1996 — PRESENT · ABHRS DIPLOMATE · FISHRS FELLOW</div>
+      <div class="h-cred-stats">
+        <div class="c">
+          <div class="v"><i>20,</i>000<i>+</i></div>
+          <div class="l">Procedures</div>
+        </div>
+        <div class="c">
+          <div class="v"><i>27</i> y</div>
+          <div class="l">Of Practice</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM STRIP — three feature blocks -->
+  <div class="h-strip">
+    <div class="h-block">
+      <div class="icon">I</div>
+      <div class="body">
+        <div class="t">— SURGICAL</div>
+        <div class="h">Hair <b>Transplant</b></div>
+      </div>
+      <div class="arr">→</div>
+    </div>
+    <div class="h-block">
+      <div class="icon">II</div>
+      <div class="body">
+        <div class="t">— REGENERATIVE</div>
+        <div class="h">Hair <b>Restoration</b></div>
+      </div>
+      <div class="arr">→</div>
+    </div>
+    <div class="h-block">
+      <div class="icon">III</div>
+      <div class="body">
+        <div class="t">— AESTHETIC</div>
+        <div class="h">Advanced <b>Aesthetics</b></div>
+      </div>
+      <div class="arr">→</div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION SAMPLE -->
+<section class="preview">
+  <div class="sec-num">SECTION · II <span style="color:rgba(243,238,226,.4)">/</span> THREE DISCIPLINES</div>
+  <h2 class="sec-h">Surgical, regenerative, and <span class="accent">aesthetic</span> — under <i>one</i> <b>surgeon's</b> hand.</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div class="roman">I · Surgical</div>
+      <span class="num">// 01_TRANSPLANT</span>
+      <h3>Hair <i>Transplant</i></h3>
+      <p>FUE, FUT, hybrid, beard and eyebrow restoration. Every graft placed personally by Dr. Katona — never delegated to a technician.</p>
+      <div class="arr">EXPLORE TRANSPLANT →</div>
+    </div>
+    <div class="card">
+      <div class="roman">II · Regenerative</div>
+      <span class="num">// 02_RESTORATION</span>
+      <h3>Hair <i>Restoration</i></h3>
+      <p>PRP, scalp micropigmentation, low-level light, ACell. Physician-managed protocols for early-stage hair loss and post-surgical maintenance.</p>
+      <div class="arr">EXPLORE RESTORATION →</div>
+    </div>
+    <div class="card">
+      <div class="roman">III · Aesthetic</div>
+      <span class="num">// 03_AESTHETICS</span>
+      <h3>Advanced <i>Aesthetics</i></h3>
+      <p>PRP for face, medical chemical peels, sclerotherapy. Neuromodulators and fillers under direct medical direction.</p>
+      <div class="arr">EXPLORE AESTHETICS →</div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEC -->
+<section class="spec">
+  <div>
+    <h4>// PALETTE</h4>
+    <div class="swatches">
+      <div class="sw" style="background:#08201c"><span>#08201C</span></div>
+      <div class="sw" style="background:#04110f"><span>#04110F</span></div>
+      <div class="sw" style="background:#1f5b4f"><span>#1F5B4F</span></div>
+      <div class="sw" style="background:#ff5a36"><span>#FF5A36</span></div>
+      <div class="sw" style="background:#ffb24a"><span style="color:#000">#FFB24A</span></div>
+      <div class="sw" style="background:#f3eee2"><span style="color:#000">#F3EEE2</span></div>
+    </div>
+  </div>
+  <div class="typo">
+    <h4>// TYPOGRAPHY</h4>
+    <div class="d"><i>Aa</i> <b>Aa</b></div>
+    <div class="b">Display: Cormorant Garamond (italic light × heavy roman) · Body: Inter Light</div>
+    <div class="m2">JETBRAINS MONO · TELEMETRY · LABELS</div>
+  </div>
+  <div>
+    <h4>// MOOD · 04 × 01 × CINEMATIC</h4>
+    <ul class="moods">
+      <li>Cinematic full-bleed macro photography (image 1 follicle glow)</li>
+      <li>Deep emerald grading × warm amber/coral pop</li>
+      <li class="alt">Coral primary — bold, surgical, alive</li>
+      <li class="alt">Ember accent — picks up natural follicle glow</li>
+      <li>Glassmorphic dark cards — credential card, feature blocks</li>
+      <li>Maison italic serif × telemetry mono labels</li>
+      <li>Editorial gravitas with technical precision</li>
+    </ul>
+  </div>
+</section>
+
+<a href="index.html" class="back">← All concepts</a>
+
+<script>
+  // subtle parallax on hero background
+  const hero=document.querySelector('.hero');
+  document.addEventListener('mousemove',e=>{
+    if(window.innerWidth<980)return;
+    const x=(e.clientX/window.innerWidth-.5)*10;
+    const y=(e.clientY/window.innerHeight-.5)*10;
+    hero.style.setProperty('--mx',x+'px');
+    hero.style.setProperty('--my',y+'px');
+    hero.style.backgroundPosition=`calc(50% + ${x}px) calc(50% + ${y}px)`;
+  });
+</script>
+</body>
+</html>

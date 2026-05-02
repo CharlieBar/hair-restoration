@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>01 — Electric Surgeon · Katona Hair Restoration Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#020403;
+    --ink:#e8fff3;
+    --line:rgba(0,255,136,.16);
+    --acid:#00ff88;
+    --acid-2:#00e27a;
+    --ember:#ff8a00;
+    --ember-2:#ff5b00;
+    --grid:rgba(255,255,255,.04);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{
+    background-image:
+      linear-gradient(var(--grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:64px 64px;
+    background-position:-1px -1px;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;font-weight:400;letter-spacing:.02em}
+
+  /* Top utility bar */
+  .util{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 24px;font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(to bottom,rgba(2,4,3,.85),rgba(2,4,3,.4));
+    backdrop-filter:blur(10px);
+  }
+  .util .l{display:flex;gap:24px;align-items:center}
+  .util .dot{width:8px;height:8px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .util a{color:var(--ink);text-decoration:none;opacity:.6;transition:.2s}
+  .util a:hover{opacity:1;color:var(--acid)}
+
+  /* Hero */
+  .hero{
+    position:relative;min-height:100vh;
+    display:grid;grid-template-rows:1fr auto;
+    padding:120px 32px 32px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(80% 50% at 80% 20%, rgba(0,255,136,.18), transparent 60%),
+      radial-gradient(60% 50% at 20% 80%, rgba(255,138,0,.12), transparent 60%),
+      url('../images/image%20(1).jpeg') no-repeat center/cover;
+    filter: contrast(1.15) saturate(1.4);
+    z-index:-2;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(2,4,3,.55) 0%, rgba(2,4,3,.85) 70%, var(--bg) 100%);
+    z-index:-1;
+  }
+
+  .hero-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;
+    max-width:1480px;margin:auto;width:100%;
+  }
+  .h-eyebrow{
+    display:inline-flex;gap:12px;align-items:center;
+    font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--acid);margin-bottom:32px;
+    padding:8px 14px;border:1px solid var(--acid);border-radius:999px;
+  }
+  .h-eyebrow .d{width:6px;height:6px;background:var(--acid);border-radius:50%;box-shadow:0 0 10px var(--acid)}
+
+  .h1{
+    font-family:'Inter',sans-serif;
+    font-weight:900;
+    font-size:clamp(56px, 9vw, 148px);
+    line-height:.86;
+    letter-spacing:-0.045em;
+    margin-bottom:32px;
+  }
+  .h1 .glow{color:var(--acid);text-shadow:0 0 32px rgba(0,255,136,.45)}
+  .h1 i{font-style:italic;font-weight:300;font-family:'JetBrains Mono',monospace;font-size:.7em;letter-spacing:0;color:var(--ember)}
+
+  .h-sub{
+    font-size:18px;line-height:1.45;color:rgba(232,255,243,.72);
+    max-width:560px;margin-bottom:40px;
+  }
+
+  .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 24px;border-radius:0;
+    font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    text-decoration:none;border:1px solid transparent;transition:.25s;
+    position:relative;overflow:hidden;
+  }
+  .btn-p{background:var(--acid);color:#001a0d}
+  .btn-p:hover{background:#fff;color:#000;box-shadow:0 0 0 2px var(--acid),0 0 40px rgba(0,255,136,.6)}
+  .btn-g{color:var(--ink);border-color:rgba(232,255,243,.25)}
+  .btn-g:hover{border-color:var(--acid);color:var(--acid)}
+  .btn .arr{transition:.25s}
+  .btn:hover .arr{transform:translateX(4px)}
+
+  /* Hero stats panel */
+  .h-panel{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:0;
+    border:1px solid var(--line);background:rgba(0,8,4,.6);backdrop-filter:blur(8px);
+  }
+  .h-cell{padding:28px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .h-cell:nth-child(2n){border-right:none}
+  .h-cell:nth-child(n+3){border-bottom:none}
+  .h-cell .v{font-family:'Inter',sans-serif;font-weight:800;font-size:42px;letter-spacing:-.02em;line-height:1;color:#fff}
+  .h-cell .v .u{color:var(--acid)}
+  .h-cell .l{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(232,255,243,.5);margin-top:10px}
+
+  /* Bottom hero strip */
+  .h-strip{
+    display:flex;justify-content:space-between;align-items:center;gap:24px;
+    padding-top:24px;border-top:1px solid var(--line);max-width:1480px;margin:auto;width:100%;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(232,255,243,.55);
+  }
+  .h-strip .ticker{display:flex;gap:32px;overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .h-strip .ticker span{white-space:nowrap;color:var(--ink);opacity:.85}
+  .ticker-track{display:flex;gap:32px;animation:slide 22s linear infinite}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* Crosshair markers */
+  .marker{position:absolute;width:14px;height:14px}
+  .marker::before,.marker::after{content:"";position:absolute;background:var(--acid)}
+  .marker::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)}
+  .marker::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%)}
+  .m1{top:120px;left:24px}
+  .m2{top:120px;right:24px}
+  .m3{bottom:24px;left:24px}
+  .m4{bottom:24px;right:24px}
+
+  /* SECTION SAMPLE */
+  section.preview{padding:120px 32px;border-top:1px solid var(--line);position:relative}
+  .sec-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--acid);margin-bottom:18px}
+  .sec-h{font-size:clamp(40px,5vw,72px);font-weight:800;line-height:.94;letter-spacing:-.03em;max-width:900px;margin:auto;text-align:center}
+  .sec-h em{color:var(--ember);font-style:italic;font-weight:300}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px;max-width:1480px;margin-inline:auto}
+  .card{
+    border:1px solid var(--line);background:rgba(0,8,4,.4);
+    padding:32px;position:relative;overflow:hidden;transition:.3s;
+    cursor:pointer;
+  }
+  .card::before{content:"";position:absolute;left:0;top:0;width:0;height:1px;background:var(--acid);transition:.5s}
+  .card:hover::before{width:100%}
+  .card:hover{background:rgba(0,255,136,.04);border-color:rgba(0,255,136,.4);transform:translateY(-4px)}
+  .card .num{font-family:'JetBrains Mono',monospace;color:var(--acid);font-size:11px;letter-spacing:.2em;margin-bottom:60px}
+  .card h3{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+  .card p{font-size:14px;line-height:1.55;color:rgba(232,255,243,.65);margin-bottom:24px}
+  .card .arr{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acid)}
+
+  /* Spec panel */
+  .spec{
+    padding:80px 32px;border-top:1px solid var(--line);
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;
+    max-width:1480px;margin:auto;
+  }
+  .spec h4{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--acid);margin-bottom:20px}
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .sw{aspect-ratio:1;border:1px solid var(--line);position:relative}
+  .sw span{position:absolute;bottom:6px;left:8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;mix-blend-mode:difference}
+  .typo .d{font-size:48px;font-weight:900;letter-spacing:-.03em;line-height:1}
+  .typo .b{font-size:14px;color:rgba(232,255,243,.7);margin-top:14px}
+  .typo .m{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--acid);margin-top:14px;letter-spacing:.18em}
+  .moods li{font-size:13px;color:rgba(232,255,243,.7);margin-bottom:10px;list-style:none;padding-left:18px;position:relative}
+  .moods li::before{content:"+";color:var(--acid);position:absolute;left:0}
+
+  /* Back link */
+  .back{position:fixed;bottom:24px;left:24px;z-index:60;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acid);text-decoration:none;border:1px solid var(--acid);padding:10px 16px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+  .back:hover{background:var(--acid);color:#000}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .cards{grid-template-columns:1fr}
+    .spec{grid-template-columns:1fr;gap:32px}
+    .h-cell .v{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<div class="util">
+  <div class="l mono"><span class="dot"></span><span>KATONA / SYS · 01_ELECTRIC_SURGEON</span></div>
+  <div class="l mono">
+    <a href="#">DR. KATONA</a>
+    <a href="#">TRANSPLANT</a>
+    <a href="#">RESTORATION</a>
+    <a href="#">AESTHETICS</a>
+    <a href="#" style="color:var(--acid)">CONSULT →</a>
+  </div>
+</div>
+
+<header class="hero">
+  <span class="marker m1"></span><span class="marker m2"></span>
+  <span class="marker m3"></span><span class="marker m4"></span>
+
+  <div class="hero-grid">
+    <div>
+      <span class="h-eyebrow"><span class="d"></span> NOW · ESSENCE MEDSPA · EDGEBROOK</span>
+      <h1 class="h1">
+        Twenty<br>
+        <span class="glow">Thousand</span><br>
+        <i>// procedures.</i> One<br>
+        surgeon.
+      </h1>
+      <p class="h-sub">Dr. Arthur Katona pioneered Follicular Unit Extraction in 1996. Twenty seven years and twenty thousand procedures later — he's home in Chicago.</p>
+      <div class="ctas">
+        <a href="#" class="btn btn-p">Book Consultation <span class="arr">→</span></a>
+        <a href="#" class="btn btn-g">Read His Story <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="h-panel">
+        <div class="h-cell"><div class="v">20<span class="u">,</span>000<span class="u">+</span></div><div class="l">Procedures performed</div></div>
+        <div class="h-cell"><div class="v">27<span class="u">y</span></div><div class="l">Years practicing</div></div>
+        <div class="h-cell"><div class="v">'96</div><div class="l">FUE pioneer year</div></div>
+        <div class="h-cell"><div class="v">US<span class="u">·</span>UK</div><div class="l">Dual licensed</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-strip">
+    <span>FEATURED IN</span>
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>CHICAGO TRIBUNE</span><span>·</span><span>USA TODAY</span><span>·</span><span>ESPN</span><span>·</span><span>BBC</span><span>·</span><span>FOX SPORTS</span><span>·</span><span>CBS SPORTS</span><span>·</span><span>MODERN LUXURY</span><span>·</span>
+        <span>CHICAGO TRIBUNE</span><span>·</span><span>USA TODAY</span><span>·</span><span>ESPN</span><span>·</span><span>BBC</span><span>·</span><span>FOX SPORTS</span><span>·</span><span>CBS SPORTS</span><span>·</span><span>MODERN LUXURY</span><span>·</span>
+      </div>
+    </div>
+    <span>ESTABLISHED 1996</span>
+  </div>
+</header>
+
+<section class="preview">
+  <div class="sec-eyebrow">— THREE PILLARS</div>
+  <h2 class="sec-h">Surgical, non-surgical, and aesthetic medicine — <em>under one surgeon</em>.</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="num">01 / SURGICAL</div>
+      <h3>Hair Transplant</h3>
+      <p>FUE, FUT, hybrid, beard, eyebrow, revision. Every graft placed personally by Dr. Katona.</p>
+      <div class="arr">EXPLORE →</div>
+    </div>
+    <div class="card">
+      <div class="num">02 / NON-SURGICAL</div>
+      <h3>Hair Restoration</h3>
+      <p>PRP, SMP, low-level light, ACell, physician-managed medical protocols.</p>
+      <div class="arr">EXPLORE →</div>
+    </div>
+    <div class="card">
+      <div class="num">03 / AESTHETIC</div>
+      <h3>Advanced Aesthetics</h3>
+      <p>PRP/PRF for face, peels, sclerotherapy, neuromodulators under medical direction.</p>
+      <div class="arr">EXPLORE →</div>
+    </div>
+  </div>
+</section>
+
+<section class="spec">
+  <div>
+    <h4>— PALETTE</h4>
+    <div class="swatches">
+      <div class="sw" style="background:#020403"><span>#020403</span></div>
+      <div class="sw" style="background:#00ff88"><span style="color:#000">#00FF88</span></div>
+      <div class="sw" style="background:#ff8a00"><span>#FF8A00</span></div>
+      <div class="sw" style="background:#0f1a14"><span>#0F1A14</span></div>
+      <div class="sw" style="background:#e8fff3"><span style="color:#000">#E8FFF3</span></div>
+      <div class="sw" style="background:#ff5b00"><span>#FF5B00</span></div>
+    </div>
+  </div>
+  <div class="typo">
+    <h4>— TYPOGRAPHY</h4>
+    <div class="d">Aa Aa</div>
+    <div class="b">Display: Inter Black 900 · Tight tracking · Numerals as poster type</div>
+    <div class="m">JETBRAINS MONO · CREDENTIALS</div>
+  </div>
+  <div>
+    <h4>— MOOD</h4>
+    <ul class="moods">
+      <li>Pitch-black canvas / electric green primary</li>
+      <li>Lab-telemetry overlays + crosshair markers</li>
+      <li>Cinematic clinical macro photography</li>
+      <li>Brutalist big-numeral display type</li>
+      <li>Live data ticker, gauge stats</li>
+      <li>Sharp, surgical, almost F1 telemetry</li>
+    </ul>
+  </div>
+</section>
+
+<a href="index.html" class="back">← All concepts</a>
+
+<script>
+  // subtle parallax on hero
+  const hero = document.querySelector('.hero');
+  document.addEventListener('mousemove',e=>{
+    const x=(e.clientX/window.innerWidth-.5)*8;
+    const y=(e.clientY/window.innerHeight-.5)*8;
+    hero.style.setProperty('--mx',x+'px');
+    hero.style.setProperty('--my',y+'px');
+    hero.style.backgroundPosition=`calc(50% + ${x}px) calc(50% + ${y}px)`;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>03 — Surgical Crimson · Katona Hair Restoration Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#f1ede4;
+    --bone-2:#e8e3d6;
+    --ink:#0a0a0a;
+    --ink-2:#1a1a1a;
+    --crimson:#e1150f;
+    --crimson-2:#b50e09;
+    --line:rgba(10,10,10,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bone);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+  .serif{font-family:'Fraunces',serif}
+
+  /* MAGAZINE TOP RULE */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    border-bottom:1px solid var(--ink);
+    background:var(--bone);
+  }
+  .topbar-inner{
+    max-width:1600px;margin:auto;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:14px 32px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .topbar .left{display:flex;gap:18px}
+  .topbar .left span:first-child{color:var(--crimson);font-weight:600}
+  .topbar .brand{font-family:'Fraunces',serif;font-size:22px;font-weight:800;letter-spacing:-.02em;text-transform:none}
+  .topbar .brand i{font-style:italic;color:var(--crimson)}
+  .topbar .right{display:flex;gap:18px;justify-content:flex-end}
+  .topbar a{color:var(--ink);text-decoration:none;opacity:.7}
+  .topbar a:hover{opacity:1;color:var(--crimson)}
+
+  /* HERO */
+  .hero{
+    position:relative;min-height:100vh;
+    padding:80px 32px 32px;
+    display:grid;grid-template-rows:auto 1fr auto;
+    border-bottom:1px solid var(--ink);
+  }
+  .hero-meta{
+    display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px;
+    padding:24px 0 32px;border-bottom:1px solid var(--ink);
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .hero-meta div{display:flex;flex-direction:column;gap:6px}
+  .hero-meta b{color:var(--crimson);font-weight:600}
+
+  .hero-grid{
+    display:grid;grid-template-columns:1.4fr 1fr;gap:64px;
+    padding:48px 0;
+    align-items:start;
+  }
+  .h-issue{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--crimson);margin-bottom:24px;
+    display:inline-flex;align-items:center;gap:14px;
+  }
+  .h-issue::after{content:"";flex:1;height:1px;background:var(--crimson);width:80px}
+
+  .h1{
+    font-family:'Fraunces',serif;
+    font-weight:800;
+    font-size:clamp(64px,9.5vw,160px);
+    line-height:.86;
+    letter-spacing:-.045em;
+    margin-bottom:48px;
+  }
+  .h1 i{font-style:italic;font-weight:300;color:var(--crimson)}
+  .h1 .tspan{display:block}
+  .h1 .undr{position:relative;display:inline-block}
+  .h1 .undr::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:6px;background:var(--crimson);z-index:-1;opacity:.9}
+
+  .deck{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+    font-size:22px;line-height:1.45;color:var(--ink-2);
+    max-width:680px;margin-bottom:36px;
+    border-left:3px solid var(--crimson);padding-left:20px;
+  }
+
+  .byline{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);margin-bottom:32px}
+  .byline b{color:var(--crimson);font-weight:600}
+
+  .ctas{display:flex;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 24px;border-radius:0;
+    font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    text-decoration:none;transition:.2s;
+  }
+  .btn-p{background:var(--ink);color:var(--bone)}
+  .btn-p:hover{background:var(--crimson);color:#fff}
+  .btn-g{color:var(--ink);border:1px solid var(--ink)}
+  .btn-g:hover{background:var(--ink);color:var(--bone)}
+
+  /* HERO IMAGE COL */
+  .h-figure{
+    position:relative;aspect-ratio:3/4;
+    background:url('../images/image%20(8).png') center/cover;
+    border:1px solid var(--ink);
+    overflow:hidden;
+  }
+  .h-figure::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 60%,rgba(10,10,10,.7));
+    mix-blend-mode:multiply;
+  }
+  .fig-caption{
+    position:absolute;bottom:18px;left:18px;right:18px;color:var(--bone);z-index:2;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    display:flex;justify-content:space-between;
+  }
+  .fig-tag{
+    position:absolute;top:18px;left:18px;background:var(--crimson);color:#fff;
+    padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  }
+
+  /* HERO BOTTOM STATS */
+  .h-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--ink);
+    padding-top:24px;
+  }
+  .h-stat{padding:0 24px;border-right:1px solid var(--line)}
+  .h-stat:first-child{padding-left:0}
+  .h-stat:last-child{border-right:none;padding-right:0}
+  .h-stat .v{font-family:'Fraunces',serif;font-weight:800;font-size:80px;line-height:.9;letter-spacing:-.04em}
+  .h-stat .v sup{font-size:.4em;font-weight:400;color:var(--crimson);vertical-align:top;margin-left:4px}
+  .h-stat .l{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);margin-top:10px}
+
+  /* SECTION SAMPLE */
+  section.preview{padding:120px 32px;border-bottom:1px solid var(--ink);position:relative}
+  .sec-grid{max-width:1480px;margin:auto;display:grid;grid-template-columns:200px 1fr;gap:64px;align-items:start}
+  .sec-num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--crimson)}
+  .sec-num b{display:block;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:80px;color:var(--ink);letter-spacing:-.04em;line-height:1;margin-top:8px}
+  .sec-h{font-family:'Fraunces',serif;font-size:clamp(40px,5vw,84px);font-weight:800;line-height:.94;letter-spacing:-.035em;max-width:980px}
+  .sec-h i{font-style:italic;font-weight:300;color:var(--crimson)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;border-top:1px solid var(--ink)}
+  .card{
+    padding:40px 28px;border-right:1px solid var(--line);position:relative;cursor:pointer;transition:.3s;
+  }
+  .card:last-child{border-right:none}
+  .card:hover{background:var(--bone-2)}
+  .card .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--crimson);margin-bottom:80px;text-transform:uppercase}
+  .card h3{font-family:'Fraunces',serif;font-size:36px;font-weight:800;line-height:1;letter-spacing:-.025em;margin-bottom:14px}
+  .card h3 i{font-style:italic;font-weight:300;color:var(--crimson)}
+  .card p{font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:24px}
+  .card .arr{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:700;border-bottom:1px solid var(--ink);padding-bottom:4px}
+  .card:hover .arr{color:var(--crimson);border-color:var(--crimson)}
+
+  /* Spec */
+  .spec{padding:80px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;max-width:1480px;margin:auto;border-bottom:1px solid var(--ink)}
+  .spec h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--crimson);margin-bottom:20px}
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .sw{aspect-ratio:1;border:1px solid var(--ink);position:relative}
+  .sw span{position:absolute;bottom:6px;left:8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;mix-blend-mode:difference}
+  .typo .d{font-family:'Fraunces',serif;font-size:64px;font-weight:800;line-height:1;letter-spacing:-.03em}
+  .typo .d i{font-style:italic;font-weight:300;color:var(--crimson)}
+  .typo .b{font-size:14px;color:var(--ink-2);margin-top:14px}
+  .typo .m{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--crimson);margin-top:14px;letter-spacing:.18em}
+  .moods li{font-size:13px;color:var(--ink-2);margin-bottom:10px;list-style:none;padding-left:18px;position:relative}
+  .moods li::before{content:"§";color:var(--crimson);position:absolute;left:0;font-weight:700}
+
+  .back{position:fixed;bottom:24px;left:24px;z-index:60;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);text-decoration:none;border:1px solid var(--ink);padding:10px 16px;background:var(--bone);font-weight:600}
+  .back:hover{background:var(--ink);color:var(--bone)}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:32px}
+    .h-stats,.cards{grid-template-columns:1fr}
+    .h-stats .h-stat,.cards .card{border-right:none;border-bottom:1px solid var(--line);padding:20px 0}
+    .sec-grid{grid-template-columns:1fr}
+    .spec{grid-template-columns:1fr}
+    .h-stat .v{font-size:48px}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="left">
+      <span>● LIVE / EDGEBROOK</span>
+      <span>VOL. 27 · NO. 20K</span>
+    </div>
+    <div class="brand"><i>K</i>ATONA<sup style="font-size:.5em;color:var(--crimson)">®</sup></div>
+    <div class="right">
+      <a href="#">Surgeon</a>
+      <a href="#">Transplant</a>
+      <a href="#">Restoration</a>
+      <a href="#">Aesthetics</a>
+      <a href="#" style="color:var(--crimson);font-weight:700">Consult →</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-meta">
+    <div><span>DATELINE</span><b>Edgebrook, Chicago</b></div>
+    <div><span>FILED</span><b>05 / 01 / 26</b></div>
+    <div><span>SURGEON</span><b>Arthur Katona, MD</b></div>
+    <div><span>FEATURE</span><b>FUE pioneer · Vol. 27</b></div>
+  </div>
+
+  <div class="hero-grid">
+    <div>
+      <div class="h-issue">FEATURE / 001</div>
+      <h1 class="h1">
+        <span class="tspan">Twenty thousand</span>
+        <span class="tspan"><i>procedures.</i> One</span>
+        <span class="tspan"><span class="undr">surgeon.</span></span>
+      </h1>
+
+      <p class="deck">A pioneer of Follicular Unit Extraction since 1996. Twenty-seven years and twenty thousand procedures later, Dr. Arthur Katona has come home to Chicago — as Medical Director at Essence MedSpa.</p>
+
+      <div class="byline">By <b>The Editors</b> · A surgical-editorial dispatch</div>
+
+      <div class="ctas">
+        <a href="#" class="btn btn-p">Book a Consultation →</a>
+        <a href="#" class="btn btn-g">Read the Profile</a>
+      </div>
+    </div>
+
+    <div class="h-figure">
+      <span class="fig-tag">Plate I</span>
+      <div class="fig-caption">
+        <span>Dr. Katona, in operation</span>
+        <span>Edgebrook · 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-stats">
+    <div class="h-stat"><div class="v">20<sup>K</sup></div><div class="l">Procedures performed</div></div>
+    <div class="h-stat"><div class="v">27</div><div class="l">Years practicing</div></div>
+    <div class="h-stat"><div class="v">'96</div><div class="l">First FUE procedure</div></div>
+    <div class="h-stat"><div class="v">2x</div><div class="l">Platinum Follicle nominee</div></div>
+  </div>
+</section>
+
+<section class="preview">
+  <div class="sec-grid">
+    <div class="sec-num">SECTION<b>02</b></div>
+    <div>
+      <h2 class="sec-h">Three pillars of practice — surgical, non-surgical, and aesthetic, <i>under one surgeon</i>.</h2>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="num">01 / Surgical</div>
+      <h3>Hair <i>Transplant</i></h3>
+      <p>FUE, FUT, hybrid, beard and eyebrow restoration. Every graft placed personally by Dr. Katona — never delegated.</p>
+      <div class="arr">EXPLORE TRANSPLANT →</div>
+    </div>
+    <div class="card">
+      <div class="num">02 / Non-surgical</div>
+      <h3>Hair <i>Restoration</i></h3>
+      <p>PRP, scalp micropigmentation, low-level light therapy, ACell. Physician-managed protocols for early-stage loss.</p>
+      <div class="arr">EXPLORE RESTORATION →</div>
+    </div>
+    <div class="card">
+      <div class="num">03 / Aesthetic</div>
+      <h3>Advanced <i>Aesthetics</i></h3>
+      <p>PRP for face, medical chemical peels, sclerotherapy. Neuromodulators and fillers under medical direction.</p>
+      <div class="arr">EXPLORE AESTHETICS →</div>
+    </div>
+  </div>
+</section>
+
+<section class="spec">
+  <div>
+    <h4>— PALETTE</h4>
+    <div class="swatches">
+      <div class="sw" style="background:#f1ede4"><span style="color:#000">#F1EDE4</span></div>
+      <div class="sw" style="background:#0a0a0a"><span>#0A0A0A</span></div>
+      <div class="sw" style="background:#e1150f"><span>#E1150F</span></div>
+      <div class="sw" style="background:#e8e3d6"><span style="color:#000">#E8E3D6</span></div>
+      <div class="sw" style="background:#1a1a1a"><span>#1A1A1A</span></div>
+      <div class="sw" style="background:#b50e09"><span>#B50E09</span></div>
+    </div>
+  </div>
+  <div class="typo">
+    <h4>— TYPOGRAPHY</h4>
+    <div class="d"><i>Aa</i> Aa</div>
+    <div class="b">Display: Fraunces (italic light × heavy roman) · Body: Inter</div>
+    <div class="m">JETBRAINS MONO · METADATA</div>
+  </div>
+  <div>
+    <h4>— MOOD</h4>
+    <ul class="moods">
+      <li>Wired UK / Toiletpaper / The Gentlewoman</li>
+      <li>Bone paper × ink black × signature crimson</li>
+      <li>Magazine grid, datelines, plate captions</li>
+      <li>Big italic serif paired with heavy roman</li>
+      <li>Crimson reserved only for key data points</li>
+      <li>Sharp, restrained, intellectual confidence</li>
+    </ul>
+  </div>
+</section>
+
+<a href="index.html" class="back">← All concepts</a>
+
+</body>
+</html>

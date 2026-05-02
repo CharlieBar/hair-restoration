@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Treatment Comparison Picker | Katona Hair Restoration · Essence MedSpa</title>
+<meta name="description" content="Free interactive comparison of hair restoration treatments — FUE, FUT, Hybrid, PRP, SMP, LLLT, and Medical therapy. Pick what matters most to you and see ranked recommendations from Dr. Katona.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script>(function(){try{const t=localStorage.getItem('katona-theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(_){document.documentElement.dataset.theme='dark';}})();</script>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="left">
+    <a href="../dr-katona.html">Dr. Katona</a>
+    <a href="../hair-transplant.html">Transplant</a>
+    <a href="../hair-restoration.html">Restoration</a>
+    <a href="../advanced-aesthetics.html">Aesthetics</a>
+    <a href="index.html" class="active">Tools</a>
+    <a href="../blog/index.html">Journal</a>
+  </div>
+  <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+  <div class="right">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="../book.html" class="cta">Consultation →</a>
+  </div>
+</nav>
+
+<header style="padding:140px 32px 60px;text-align:center;border-bottom:1px solid var(--line);position:relative">
+  <div class="container-narrow reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:24px"><span class="dot"></span>TOOL 03 · TREATMENT COMPARISON</span>
+    <h1 class="display" style="font-size:clamp(48px,7vw,108px);margin-bottom:20px">Seven treatments. <i class="ember">One winner</i> for you<span class="end">.</span></h1>
+    <p class="lede" style="max-width:720px;margin:0 auto;font-size:20px">Pick what matters most. The seven hair restoration options re-rank live based on your priorities. Honest scoring, no surgeon bias.</p>
+  </div>
+</header>
+
+<div class="telemetry">
+  <div class="l"><span class="dot"></span><span>KATONA / TOOLS · COMPARISON</span></div>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>FUE · FUT · HYBRID · PRP · SMP · LLLT · MEDICAL</span><span class="div">/</span>
+      <span>RANKED LIVE BY YOUR PRIORITIES</span><span class="div">/</span>
+      <span>NO SURGEON BIAS — TRANSPARENT MATRIX</span><span class="div">/</span>
+      <span>BUILT BY DR. KATONA · 27 YEARS · 20,000+ PROCEDURES</span><span class="div">/</span>
+      <span>FUE · FUT · HYBRID · PRP · SMP · LLLT · MEDICAL</span><span class="div">/</span>
+      <span>RANKED LIVE BY YOUR PRIORITIES</span><span class="div">/</span>
+      <span>NO SURGEON BIAS — TRANSPARENT MATRIX</span><span class="div">/</span>
+    </div>
+  </div>
+  <div class="r mono">EDGEBROOK · CHICAGO</div>
+</div>
+
+
+<main style="padding:60px 0 100px;position:relative">
+
+  <div class="compare-shell">
+
+    <!-- PRIORITY TOGGLES -->
+    <section class="compare-priorities">
+      <div class="head">
+        <h3>// WHAT MATTERS MOST TO YOU?</h3>
+        <button class="reset" id="resetBtn">↺ RESET</button>
+      </div>
+      <div class="priority-grid" id="priorityGrid">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- LIVE-RANKED RESULTS -->
+    <section class="compare-results" id="resultsList">
+      <!-- populated by JS -->
+    </section>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="tool-disclaimer" style="margin-top:60px">
+    — Scoring is based on Dr. Katona's clinical experience across 20,000+ cases. Final treatment recommendations require an in-person or virtual consultation including donor area trichoscopy and medical history review.
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="grid">
+    <div>
+      <a href="../index.html" class="brand">Katona<sup>®</sup></a>
+      <p class="tagline">27 years. 20,000+ procedures. One surgeon — at Essence MedSpa, Edgebrook.</p>
+      <address>5418 W. Devon Avenue<br>Edgebrook, Chicago, IL 60646<br><a href="tel:+1773XXXXXXX">(773) XXX-XXXX</a><br><a href="mailto:consult@essencemedspachicago.com">consult@essencemedspachicago.com</a></address>
+    </div>
+    <div><h5>— Services</h5><ul>
+      <li><a href="../hair-transplant.html">Hair Transplant</a></li>
+      <li><a href="../hair-restoration.html">Hair Restoration</a></li>
+      <li><a href="../advanced-aesthetics.html">Advanced Aesthetics</a></li>
+      <li><a href="../dr-katona.html">About Dr. Katona</a></li>
+      <li><a href="index.html">Tools</a></li>
+      <li><a href="../blog/index.html">Journal</a></li>
+    </ul></div>
+    <div><h5>— Hours</h5><ul>
+      <li>Mon — Thu &nbsp; 9:00 — 7:00</li>
+      <li>Friday &nbsp; 9:00 — 6:00</li>
+      <li>Saturday &nbsp; 10:00 — 4:00</li>
+      <li>Sunday &nbsp; Closed</li>
+    </ul></div>
+    <div><h5>— Connect</h5><ul>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Google Reviews · 4.9 ★</a></li>
+      <li><a href="../book.html">Book Consultation →</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Katona Hair Restoration at Essence MedSpa & Wellness Center · Edgebrook, Chicago</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Compliance</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+/* ========================================================================
+   TREATMENT COMPARISON PICKER — Live re-ranking by user priorities
+   ======================================================================== */
+(() => {
+  // Priority dimensions
+  const priorities = [
+    { id:'permanent', label:'Permanent results' },
+    { id:'lowcost',   label:'Low cost' },
+    { id:'quickrec',  label:'Quick recovery' },
+    { id:'natural',   label:'Natural-looking' },
+    { id:'noscar',    label:'No scarring' },
+    { id:'noninv',    label:'Non-invasive' },
+  ];
+
+  // Treatments with scores (1–5) for each priority
+  const treatments = [
+    {
+      id:'fue', name:'FUE', italic:'Hair Transplant', cat:'// SURGICAL',
+      desc:'Individual follicles extracted one at a time. No linear scar. Permanent.',
+      scores:{ permanent:5, lowcost:1, quickrec:4, natural:5, noscar:5, noninv:1 },
+      href:'../hair-transplant.html'
+    },
+    {
+      id:'fut', name:'FUT', italic:'Hair Transplant', cat:'// SURGICAL',
+      desc:'Strip technique. Higher graft yield in a single session. Linear scar concealable by hair.',
+      scores:{ permanent:5, lowcost:2, quickrec:3, natural:5, noscar:2, noninv:1 },
+      href:'../hair-transplant.html'
+    },
+    {
+      id:'hybrid', name:'FUE/FUT', italic:'Hybrid', cat:'// SURGICAL',
+      desc:'Maximum graft yield in one surgical day. For advanced hair loss requiring exceptional volume.',
+      scores:{ permanent:5, lowcost:1, quickrec:3, natural:5, noscar:3, noninv:1 },
+      href:'../hair-transplant.html'
+    },
+    {
+      id:'prp', name:'PRP', italic:'for Hair', cat:'// REGENERATIVE',
+      desc:'Your own platelets injected to stimulate follicles. Series of 3–4 sessions. Repeating maintenance.',
+      scores:{ permanent:2, lowcost:4, quickrec:5, natural:4, noscar:5, noninv:4 },
+      href:'../hair-restoration.html'
+    },
+    {
+      id:'smp', name:'SMP', italic:'Scalp Micropigmentation', cat:'// COSMETIC',
+      desc:'Pigment applied to scalp to create the illusion of follicles. Visible results in 2–3 sessions.',
+      scores:{ permanent:4, lowcost:4, quickrec:5, natural:3, noscar:5, noninv:4 },
+      href:'../hair-restoration.html'
+    },
+    {
+      id:'medical', name:'Medical', italic:'Therapy', cat:'// MEDICAL',
+      desc:'Finasteride and Minoxidil under physician supervision. Ongoing daily protocol.',
+      scores:{ permanent:2, lowcost:5, quickrec:5, natural:4, noscar:5, noninv:5 },
+      href:'../hair-restoration.html'
+    },
+    {
+      id:'lllt', name:'LLLT', italic:'Light Therapy', cat:'// REGENERATIVE',
+      desc:'Low-level laser therapy. FDA-cleared for androgenetic alopecia. In-office and at-home options.',
+      scores:{ permanent:2, lowcost:3, quickrec:5, natural:3, noscar:5, noninv:5 },
+      href:'../hair-restoration.html'
+    },
+  ];
+
+  const selected = new Set();
+
+  // Build priority toggles
+  const grid = document.getElementById('priorityGrid');
+  grid.innerHTML = priorities.map(p => `
+    <button class="priority" data-id="${p.id}">
+      <span class="check">✓</span>
+      <span class="label-text">${p.label}</span>
+    </button>
+  `).join('');
+
+  // Render
+  function render(){
+    const list = document.getElementById('resultsList');
+    // Score every treatment based on selected priorities (default: all priorities equal)
+    const usingDefaults = selected.size === 0;
+    const activePriorities = usingDefaults ? priorities.map(p => p.id) : Array.from(selected);
+    const maxPossible = activePriorities.length * 5;
+
+    const ranked = treatments.map(t => {
+      const total = activePriorities.reduce((sum, key) => sum + t.scores[key], 0);
+      const pct = Math.round((total / maxPossible) * 100);
+      return { ...t, total, pct };
+    }).sort((a,b) => b.total - a.total);
+
+    // Render
+    list.innerHTML = ranked.map((t, i) => {
+      const winner = i === 0;
+      const scoreRows = activePriorities.slice(0, 4).map(key => {
+        const score = t.scores[key];
+        const priority = priorities.find(p => p.id === key);
+        return `
+          <div class="score-row">
+            <span class="name">${priority.label}</span>
+            <div class="bar"><div class="bar-fill" style="width:${(score/5)*100}%"></div></div>
+          </div>
+        `;
+      }).join('');
+
+      const treatmentName = `${t.name} ${t.italic}`;
+      const bookHref = winner
+        ? `../book.html?tool=comparison&treatment=${encodeURIComponent(treatmentName)}`
+        : t.href;
+      return `
+        <article class="tcard ${winner ? 'winner' : ''}">
+          <div class="rank">${i + 1}</div>
+          <div class="info">
+            <span class="cat">${t.cat}</span>
+            <h3>${t.name} <i>${t.italic}</i></h3>
+            <p>${t.desc}</p>
+          </div>
+          <div class="scores">${scoreRows}</div>
+          <div class="right">
+            <span class="badge">★ RECOMMENDED</span>
+            <span class="total">${t.pct}<small style="font-size:.5em;color:var(--ink-soft)">%</small></span>
+            <a href="${bookHref}" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);text-decoration:none;border-bottom:1px solid var(--coral);padding-bottom:2px">${winner ? 'BOOK NOW →' : 'LEARN MORE →'}</a>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  // Event listeners
+  document.addEventListener('click', e => {
+    const p = e.target.closest('.priority');
+    if (p) {
+      const id = p.dataset.id;
+      if (selected.has(id)) { selected.delete(id); p.classList.remove('on'); }
+      else { selected.add(id); p.classList.add('on'); }
+      render();
+    }
+    if (e.target.id === 'resetBtn') {
+      selected.clear();
+      document.querySelectorAll('.priority').forEach(el => el.classList.remove('on'));
+      render();
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

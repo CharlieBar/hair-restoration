@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Katona Hair Restoration — 5 Design Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,800;1,300&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08080c;
+    --bg-2:#101018;
+    --ink:#f5f5fa;
+    --mute:rgba(245,245,250,.6);
+    --line:rgba(245,245,250,.1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+  header.top{
+    position:relative;padding:80px 32px 60px;border-bottom:1px solid var(--line);
+    text-align:center;
+  }
+  header.top::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(60% 50% at 50% 0%,rgba(255,30,138,.18),transparent 60%),
+      radial-gradient(60% 50% at 50% 100%,rgba(60,250,255,.12),transparent 60%);
+    pointer-events:none;
+  }
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,245,250,.55);margin-bottom:24px;display:block;position:relative}
+  h1.htitle{
+    font-family:'Fraunces',serif;font-weight:400;font-size:clamp(48px,7vw,108px);
+    line-height:.96;letter-spacing:-.02em;max-width:1100px;margin:0 auto 24px;position:relative;
+  }
+  h1.htitle i{font-style:italic;background:linear-gradient(120deg,#ff1e8a,#a06bff,#3cfaff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:17px;line-height:1.55;color:var(--mute);max-width:680px;margin:0 auto;position:relative}
+
+  .grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:32px;
+    padding:64px 32px;max-width:1600px;margin:auto;
+  }
+  .grid .row-full{grid-column:span 2}
+
+  .concept{
+    position:relative;border:1px solid var(--line);overflow:hidden;
+    background:var(--bg-2);transition:.3s;cursor:pointer;text-decoration:none;color:var(--ink);
+    display:flex;flex-direction:column;
+  }
+  .concept:hover{border-color:rgba(245,245,250,.4);transform:translateY(-4px)}
+  .concept .thumb{
+    position:relative;aspect-ratio:16/10;width:100%;overflow:hidden;
+    background:var(--bg);
+  }
+  .concept iframe{
+    position:absolute;top:0;left:0;width:200%;height:200%;border:0;
+    transform:scale(.5);transform-origin:0 0;pointer-events:none;
+  }
+  .concept .thumb::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,rgba(8,8,12,.85));
+    pointer-events:none;
+  }
+  .concept-info{padding:28px 28px 32px}
+  .concept-info .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--mute);text-transform:uppercase;margin-bottom:10px}
+  .concept-info h2{font-family:'Fraunces',serif;font-size:36px;font-weight:400;letter-spacing:-.02em;margin-bottom:8px;line-height:1.05}
+  .concept-info h2 i{font-style:italic}
+  .concept-info .tagline{font-size:14px;color:var(--mute);line-height:1.5;margin-bottom:18px}
+  .swatch-row{display:flex;gap:6px;margin-bottom:18px}
+  .swatch-row .s{width:28px;height:28px;border:1px solid var(--line);border-radius:4px}
+  .concept-info .open{
+    display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    border-bottom:1px solid currentColor;padding-bottom:4px;
+  }
+  .concept:hover .open{color:#ff1e8a}
+
+  /* Per-concept accent borders */
+  .c1{border-color:rgba(0,255,136,.25)}.c1:hover{border-color:#00ff88}
+  .c2{border-color:rgba(160,107,255,.3)}.c2:hover{border-color:#a06bff}
+  .c3{border-color:rgba(225,21,15,.3)}.c3:hover{border-color:#e1150f}
+  .c4{border-color:rgba(212,160,59,.3)}.c4:hover{border-color:#d4a03b}
+  .c5{border-color:rgba(255,30,138,.35)}.c5:hover{border-color:#ff1e8a}
+
+  /* Compare bar */
+  .compare{
+    padding:48px 32px 64px;border-top:1px solid var(--line);
+    max-width:1600px;margin:auto;
+  }
+  .compare h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);margin-bottom:24px}
+  .ctab{
+    width:100%;border-collapse:collapse;font-size:13px;
+  }
+  .ctab th,.ctab td{padding:14px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ctab th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:500}
+  .ctab td:first-child{font-family:'Fraunces',serif;font-size:18px;font-style:italic;width:200px}
+  .ctab td.mood{color:var(--mute)}
+  .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+  .p-bold{background:rgba(255,30,138,.15);color:#ff1e8a}
+  .p-warm{background:rgba(212,160,59,.15);color:#d4a03b}
+  .p-edit{background:rgba(225,21,15,.15);color:#ff5b53}
+  .p-light{background:rgba(160,107,255,.18);color:#bf9aff}
+  .p-tech{background:rgba(60,250,255,.15);color:#3cfaff}
+  .p-acid{background:rgba(0,255,136,.15);color:#00ff88}
+
+  footer{padding:48px 32px;text-align:center;color:var(--mute);font-size:13px;border-top:1px solid var(--line)}
+  footer b{color:var(--ink)}
+
+  @media(max-width:980px){
+    .grid{grid-template-columns:1fr}
+    .grid .row-full{grid-column:span 1}
+    .ctab td:first-child{width:auto}
+    .ctab{display:block;overflow-x:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <span class="eyebrow">— Katona Hair Restoration · Design Direction Selection · 05 / 01 / 26</span>
+  <h1 class="htitle">Five directions. <i>One website.</i><br>Pick a mood — we build the rest.</h1>
+  <p class="lede">All five hit your brief: bold, modern, sharp, crisp colors (no muted), full-bleed hero, light/dark capable, premium typography, animated. Each is a genuinely different feeling — not five versions of the same idea. Open any concept to see a full-screen hero + one section preview + palette + typography spec.</p>
+</header>
+
+<section class="grid">
+  <a href="01-electric-surgeon.html" class="concept c1">
+    <div class="thumb"><iframe src="01-electric-surgeon.html" loading="lazy"></iframe></div>
+    <div class="concept-info">
+      <div class="num">CONCEPT 01 · DARK / CLINICAL</div>
+      <h2>Electric <i>Surgeon</i></h2>
+      <p class="tagline">Pitch-black canvas, acid-green primary, amber spark. Brutalist big-numeral display, lab-telemetry overlays, F1-precision feel. Cinematic clinical macro photography.</p>
+      <div class="swatch-row">
+        <div class="s" style="background:#020403"></div>
+        <div class="s" style="background:#00ff88"></div>
+        <div class="s" style="background:#ff8a00"></div>
+        <div class="s" style="background:#e8fff3"></div>
+      </div>
+      <span class="open">OPEN CONCEPT →</span>
+    </div>
+  </a>
+
+  <a href="02-prism-chrome.html" class="concept c2">
+    <div class="thumb"><iframe src="02-prism-chrome.html" loading="lazy"></iframe></div>
+    <div class="concept-info">
+      <div class="num">CONCEPT 02 · LIGHT / LUXE</div>
+      <h2>Prism <i>Chrome</i></h2>
+      <p class="tagline">Iridescent holographic gradients on paper white. Glassmorphism cards, italic editorial serif, chrome-shimmer headlines. Cosmoss × Augustinus Bader vibe. Dark mode = midnight indigo.</p>
+      <div class="swatch-row">
+        <div class="s" style="background:#f4f3f1"></div>
+        <div class="s" style="background:linear-gradient(120deg,#ff6ad9,#a06bff,#5fc8ff)"></div>
+        <div class="s" style="background:#a06bff"></div>
+        <div class="s" style="background:#0a0a14"></div>
+      </div>
+      <span class="open">OPEN CONCEPT →</span>
+    </div>
+  </a>
+
+  <a href="03-surgical-crimson.html" class="concept c3">
+    <div class="thumb"><iframe src="03-surgical-crimson.html" loading="lazy"></iframe></div>
+    <div class="concept-info">
+      <div class="num">CONCEPT 03 · EDITORIAL</div>
+      <h2>Surgical <i>Crimson</i></h2>
+      <p class="tagline">Bone paper × ink black × signature crimson. Wired-magazine swiss editorial: datelines, plate captions, italic light serif paired with heavy roman. Crimson reserved for impact only.</p>
+      <div class="swatch-row">
+        <div class="s" style="background:#f1ede4"></div>
+        <div class="s" style="background:#0a0a0a"></div>
+        <div class="s" style="background:#e1150f"></div>
+        <div class="s" style="background:#b50e09"></div>
+      </div>
+      <span class="open">OPEN CONCEPT →</span>
+    </div>
+  </a>
+
+  <a href="04-couture-noir.html" class="concept c4">
+    <div class="thumb"><iframe src="04-couture-noir.html" loading="lazy"></iframe></div>
+    <div class="concept-info">
+      <div class="num">CONCEPT 04 · MAISON / ATELIER</div>
+      <h2>Couture <i>Noir</i></h2>
+      <p class="tagline">Inky black × warm cream × 24K gold foil with deep wine accent. Italic ligature serifs, roman numerals, framed plates with gold corners. Dior Joaillerie meets surgical precision.</p>
+      <div class="swatch-row">
+        <div class="s" style="background:#0a0908"></div>
+        <div class="s" style="background:#f4efe6"></div>
+        <div class="s" style="background:linear-gradient(120deg,#b8862a,#f5d77c,#d4a03b)"></div>
+        <div class="s" style="background:#7a1f2b"></div>
+      </div>
+      <span class="open">OPEN CONCEPT →</span>
+    </div>
+  </a>
+
+  <a href="05-cyberlab-magenta.html" class="concept c5 row-full">
+    <div class="thumb" style="aspect-ratio:24/8"><iframe src="05-cyberlab-magenta.html" loading="lazy"></iframe></div>
+    <div class="concept-info">
+      <div class="num">CONCEPT 05 · CYBER / FUTURIST</div>
+      <h2>Cyberlab <i>Magenta</i></h2>
+      <p class="tagline">Pure black + electric magenta + cyber cyan + lime accent. Duotone portraits, scanline overlays, terminal HUD labels, blinking cursors, ASCII corner brackets. The most "different" — bold, futurist, tech-forward.</p>
+      <div class="swatch-row">
+        <div class="s" style="background:#06060a"></div>
+        <div class="s" style="background:#ff1e8a"></div>
+        <div class="s" style="background:#3cfaff"></div>
+        <div class="s" style="background:#d4ff1a"></div>
+        <div class="s" style="background:#f5f5ff"></div>
+      </div>
+      <span class="open">OPEN CONCEPT →</span>
+    </div>
+  </a>
+</section>
+
+<section class="compare">
+  <h3>— Compare at a glance</h3>
+  <table class="ctab">
+    <thead>
+      <tr>
+        <th>Direction</th>
+        <th>Mood</th>
+        <th>Base mode</th>
+        <th>Type</th>
+        <th>Personality</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01 · Electric Surgeon</td>
+        <td class="mood">Cinematic clinical macro · F1 telemetry · sparks</td>
+        <td><span class="pill p-bold">DARK</span></td>
+        <td>Inter Black + JetBrains Mono</td>
+        <td><span class="pill p-acid">SHARP · TECHNICAL</span></td>
+      </tr>
+      <tr>
+        <td>02 · Prism Chrome</td>
+        <td class="mood">Iridescent holographic · glassmorphism · pearlescent mesh</td>
+        <td><span class="pill p-light">LIGHT</span></td>
+        <td>Instrument Serif (italic) + Sans</td>
+        <td><span class="pill p-light">LUMINOUS · LUXE</span></td>
+      </tr>
+      <tr>
+        <td>03 · Surgical Crimson</td>
+        <td class="mood">Wired magazine · plate captions · datelines · grid</td>
+        <td><span class="pill p-light">LIGHT</span></td>
+        <td>Fraunces (italic ↔ heavy roman) + Inter</td>
+        <td><span class="pill p-edit">EDITORIAL · INTELLIGENT</span></td>
+      </tr>
+      <tr>
+        <td>04 · Couture Noir</td>
+        <td class="mood">Maison atelier · gold foil · framed plates · roman numerals</td>
+        <td><span class="pill p-bold">DARK</span></td>
+        <td>Cormorant Garamond + Inter Light</td>
+        <td><span class="pill p-warm">PREMIUM · INTIMATE</span></td>
+      </tr>
+      <tr>
+        <td>05 · Cyberlab Magenta</td>
+        <td class="mood">Cyber-medical · terminal HUD · scanlines · duotone</td>
+        <td><span class="pill p-bold">DARK</span></td>
+        <td>Space Grotesk Bold + JetBrains Mono</td>
+        <td><span class="pill p-tech">FUTURIST · LOUD</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  Open any concept full-screen, scroll the hero + section sample, then tell me <b>"go with 0X"</b> — I'll build the full 5-page site (Hub, Dr. Katona, Hair Transplant, Hair Restoration, Advanced Aesthetics) in that direction with every animation and section in HTML / CSS / JS.
+</footer>
+
+</body>
+</html>

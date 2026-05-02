@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Advanced Aesthetics Chicago | Under Medical Direction by Dr. Katona | Essence</title>
+<meta name="description" content="Advanced aesthetic medicine at Essence MedSpa in Edgebrook, Chicago. Selected services performed personally by Dr. Katona; full menu under his medical direction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* Tier banner */
+  .tier-banner{
+    max-width:1480px;margin:0 auto 48px;padding:32px;border-radius:24px;
+    background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--line);
+    display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;
+  }
+  .tier-banner.t1{border:1px solid var(--line-coral);background:var(--coral-soft)}
+  .tier-banner .badge{
+    width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:48px;
+    flex-shrink:0;letter-spacing:-.04em;
+  }
+  .tier-banner.t1 .badge{background:var(--coral);color:#fff}
+  .tier-banner.t2 .badge{background:var(--bg-elev);color:var(--ember);border:1px solid var(--ember)}
+  .tier-banner h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:48px;line-height:1.05;color:var(--ink);letter-spacing:-.018em;margin-bottom:8px}
+  .tier-banner h2 i{font-style:italic;color:var(--ember)}
+  .tier-banner p{font-size:15px;line-height:1.6;color:var(--ink-mute);font-weight:300;max-width:780px}
+  /* Compare situations table */
+  .situations{max-width:1100px;margin:0 auto;padding:0 32px;border-top:1px solid var(--line)}
+  .situation{display:grid;grid-template-columns:1fr 1.5fr 1.5fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--line);align-items:start}
+  .situation .label{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:22px;color:var(--ink);letter-spacing:-.012em;line-height:1.2}
+  .situation .col{font-size:14px;line-height:1.65;color:var(--ink-mute);font-weight:300;padding-left:18px;border-left:2px solid var(--line)}
+  .situation .col.with{border-left-color:var(--coral);color:var(--ink)}
+  .situation .col .h{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;font-weight:500}
+  .situation .col.without .h{color:var(--ink-soft)}
+  .situation.head{border-bottom:1px solid var(--coral);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral)}
+  .situation.head .col{border-left:none;padding-left:0;font-size:11px;color:var(--coral)}
+  /* Fellowships callout */
+  .fellow-list{display:grid;gap:14px;margin-top:32px}
+  .fellow-list li{
+    list-style:none;padding:18px 24px;border:1px solid var(--line);border-radius:14px;
+    background:var(--glass-soft);font-size:15px;color:var(--ink);font-weight:300;
+    display:flex;align-items:center;gap:16px;
+  }
+  .fellow-list li::before{
+    content:"§";color:var(--coral);font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:28px;font-weight:500;line-height:1;
+  }
+  @media (max-width:780px){
+    .tier-banner{grid-template-columns:1fr;gap:18px;padding:24px}
+    .tier-banner .badge{width:64px;height:64px;font-size:36px}
+    .situation{grid-template-columns:1fr;gap:8px}
+    .situation.head{display:none}
+    .situation .col{padding-left:0;border-left:none;border-top:1px solid var(--line);padding-top:10px}
+  }
+</style>
+<script>(function(){try{const t=localStorage.getItem('katona-theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(_){document.documentElement.dataset.theme='dark';}})();</script>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="left">
+    <a href="dr-katona.html">Dr. Katona</a>
+    <a href="hair-transplant.html">Transplant</a>
+    <a href="hair-restoration.html">Restoration</a>
+    <a href="advanced-aesthetics.html" class="active">Aesthetics</a>
+    <a href="tools/index.html">Tools</a>
+    <a href="blog/index.html">Journal</a>
+  </div>
+  <a href="index.html" class="brand">Katona<sup>®</sup></a>
+  <div class="right">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a href="book.html" class="cta">Consultation →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg" style="background-image:url('../images/image%20(5).png')"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow reveal"><span class="dot"></span>ADVANCED AESTHETICS · <b>UNDER MEDICAL DIRECTION</b></span>
+
+      <h1 class="display reveal reveal-d-1" style="margin-top:36px">
+        Aesthetic medicine,<br>
+        under <i class="ember">physician</i><br>
+        <i>oversight</i><span class="end">.</span>
+      </h1>
+
+      <p class="lede reveal reveal-d-2">Dr. Arthur Katona's dermatology fellowship training and 27 years of medical practice bring board-level oversight to every procedure performed at Essence MedSpa.</p>
+
+      <div class="ctas reveal reveal-d-3">
+        <a href="book.html" class="btn btn-primary">Book Free Consultation <span class="arr">→</span></a>
+        <a href="dr-katona.html" class="btn btn-ghost">About Dr. Katona <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <div class="cred-card reveal reveal-d-2">
+      <div class="label"><span>// AESTHETICS FILE</span><b>PROC · 03</b></div>
+      <div class="name">Tier I · <i>Performs.</i><br>Tier II · <i>Directs.</i></div>
+      <div class="role">3 DERMATOLOGY FELLOWSHIPS · ABHRS · FISHRS · GMC UK · 27 YEARS PRACTICE</div>
+      <div class="cred-stats">
+        <div class="c">
+          <div class="v"><i>3</i></div>
+          <div class="l">Dermatology Fellowships</div>
+        </div>
+        <div class="c">
+          <div class="v"><i>27</i> y</div>
+          <div class="l">Medical Practice</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="telemetry">
+  <div class="l"><span class="dot"></span><span>KATONA / SYS · LIVE</span></div>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>UNDER MEDICAL DIRECTION</span><span class="div">/</span>
+      <span>3 DERMATOLOGY FELLOWSHIPS</span><span class="div">/</span>
+      <span>TIER 1 · PERFORMED PERSONALLY</span><span class="div">/</span>
+      <span>TIER 2 · UNDER MEDICAL DIRECTION</span><span class="div">/</span>
+      <span>PRP · PEELS · SCLEROTHERAPY · SCREENING</span><span class="div">/</span>
+      <span>BOTOX · FILLER · LASER · MICRONEEDLING</span><span class="div">/</span>
+      <span>UNDER MEDICAL DIRECTION</span><span class="div">/</span>
+      <span>3 DERMATOLOGY FELLOWSHIPS</span><span class="div">/</span>
+      <span>TIER 1 · PERFORMED PERSONALLY</span><span class="div">/</span>
+      <span>TIER 2 · UNDER MEDICAL DIRECTION</span><span class="div">/</span>
+      <span>PRP · PEELS · SCLEROTHERAPY · SCREENING</span><span class="div">/</span>
+      <span>BOTOX · FILLER · LASER · MICRONEEDLING</span><span class="div">/</span>
+    </div>
+  </div>
+  <div class="r mono">EDGEBROOK · CHICAGO</div>
+</div>
+
+
+<!-- TRUST BAR -->
+<section class="section-tight section-divided">
+  <div class="container">
+    <div class="trust-bar reveal">
+      <div class="c"><span class="label">// TRAINING</span><div class="v">Derm.</div><div class="l">Fellowship-trained physician</div></div>
+      <div class="c"><span class="label">// OVERSIGHT</span><div class="v">Phys.</div><div class="l">Every treatment under medical oversight</div></div>
+      <div class="c"><span class="label">// PRACTICE</span><div class="v"><i>27</i> y</div><div class="l">Continuous medical practice</div></div>
+      <div class="c"><span class="label">// CERT.</span><div class="v">ABHRS</div><div class="l">ISHRS Fellow · GMC UK</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DERMATOLOGY CREDENTIALS BLOCK (the bridge) -->
+<section class="section section-divider">
+  <div class="sec-head reveal">
+    <div class="sec-num">SECTION · I <span style="color:var(--ink-soft)">/</span> THE BRIDGE</div>
+    <h2 class="display">Dr. Katona's path into aesthetic medicine runs through <i>three</i> dermatology fellowships.</h2>
+  </div>
+
+  <div class="editorial-block reveal">
+    <p class="body">Most medical spas operate under the supervision of a physician whose primary specialty is unrelated to skin and aesthetics — internal medicine, family practice, or emergency medicine. Dr. Katona's medical training is different.</p>
+    <p class="body">Following his MD and surgical residencies, he completed three sequential dermatology and dermatopathology fellowships — at Bernard Ackerman's Dermatopathology Academy in New York, the University of Puerto Rico under Dr. J. Sanchez, and the Advanced Dermatology Institute under Dr. Matt Leavitt in Orlando. The combined training spans the full clinical, microscopic, and surgical spectrum of skin medicine.</p>
+    <p class="body">What this means for an Essence patient is concrete. A Botox practitioner without dermatology background may not recognize an unusual mole during a treatment. A laser technician may not know which skin types are at risk for a given device setting. Dr. Katona does. That oversight is the value of his medical directorship.</p>
+    <ul class="fellow-list">
+      <li>Dermatopathology Fellowship — Ackerman Academy, New York</li>
+      <li>Dermatology Fellowship — University of Puerto Rico</li>
+      <li>Dermatology & Hair Restoration Fellowship — Advanced Dermatology Institute, Orlando</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TIER 1 — PERFORMED PERSONALLY -->
+<section class="section section-divided" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="tier-banner t1 reveal">
+      <div class="badge">I</div>
+      <div>
+        <span class="tier-label t1"><span class="dot"></span>TIER 1 — PERFORMED PERSONALLY BY DR. KATONA</span>
+        <h2>Selected aesthetic services delivered <i>directly</i> by Dr. Katona.</h2>
+        <p>These are the services where Dr. Katona's specific medical and surgical training applies most directly. He performs each one personally — consultation through procedure.</p>
+      </div>
+    </div>
+
+    <div class="cards-3" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
+      <div class="card reveal">
+        <div class="roman">i · Regenerative</div>
+        <span class="num">// T1_PRP_FACE</span>
+        <h3>PRP / PRF for <i>Face</i></h3>
+        <p class="tagline">Regenerative facial treatment using your own platelets.</p>
+        <p>PRP and PRF deliver concentrated growth factors from your own blood into the skin — improving texture, fine lines, under-eye hollows, and overall skin quality. Performed personally by Dr. Katona.</p>
+        <ul class="highlights">
+          <li>Performed personally by Dr. Katona</li>
+          <li>Uses your own blood — no foreign substances</li>
+          <li>Combines well with microneedling, lasers, fillers</li>
+          <li>Series of 3 sessions for optimal results</li>
+        </ul>
+        <div class="meta"><span>SESSION</span><b>60 — 90 MIN</b></div>
+        <div class="arr">INQUIRE ABOUT PRP/PRF →</div>
+      </div>
+
+      <div class="card reveal reveal-d-1">
+        <div class="roman">ii · Resurfacing</div>
+        <span class="num">// T1_PEELS</span>
+        <h3>Medical-Grade <i>Peels</i></h3>
+        <p class="tagline">Deeper peels under physician oversight.</p>
+        <p>Medical-grade chemical peels — TCA, Jessner's, and combination peels — penetrate beyond what an aesthetician's superficial peel can reach. Requires physician administration.</p>
+        <ul class="highlights">
+          <li>Physician-administered (not aesthetician)</li>
+          <li>Treats deeper skin damage and scarring</li>
+          <li>Can address pre-cancerous changes</li>
+          <li>Requires medical evaluation before treatment</li>
+        </ul>
+        <div class="meta"><span>SESSION</span><b>30 — 60 MIN</b></div>
+        <div class="arr">INQUIRE ABOUT PEELS →</div>
+      </div>
+
+      <div class="card reveal reveal-d-2">
+        <div class="roman">iii · Diagnostic</div>
+        <span class="num">// T1_SCREENING</span>
+        <h3>Skin Cancer <i>Screening</i></h3>
+        <p class="tagline">Dermatology-trained evaluation. The check most medspas can't offer.</p>
+        <p>Full-body skin examination by a dermatology-fellowship-trained physician. Suspicious moles or lesions are evaluated, photographed, and either monitored, biopsied, or referred.</p>
+        <ul class="highlights">
+          <li>Performed by dermatology-trained physician</li>
+          <li>Full-body screening protocol</li>
+          <li>Biopsy capability on-site when indicated</li>
+          <li>Recommended annually for adults over 35</li>
+        </ul>
+        <div class="meta"><span>SESSION</span><b>30 — 45 MIN</b></div>
+        <div class="arr">SCHEDULE SCREENING →</div>
+      </div>
+
+      <div class="card reveal">
+        <div class="roman">iv · Vascular</div>
+        <span class="num">// T1_SCLERO</span>
+        <h3>Sclero<i>therapy</i></h3>
+        <p class="tagline">Spider vein and small varicose vein treatment.</p>
+        <p>Sclerotherapy uses a small-volume injection of sclerosing solution into spider veins and small varicose veins, causing them to close and gradually disappear.</p>
+        <ul class="highlights">
+          <li>Performed personally by Dr. Katona</li>
+          <li>Treats spider and small varicose veins</li>
+          <li>Multiple sessions typically required</li>
+          <li>Compression hose worn briefly post-treatment</li>
+        </ul>
+        <div class="meta"><span>SESSION</span><b>30 — 60 MIN</b></div>
+        <div class="arr">INQUIRE ABOUT SCLEROTHERAPY →</div>
+      </div>
+
+      <div class="card reveal reveal-d-1">
+        <div class="roman">v · Medical</div>
+        <span class="num">// T1_ACNE</span>
+        <h3>Acne & <i>Rosacea</i> Care</h3>
+        <p class="tagline">Physician-managed protocols beyond skincare alone.</p>
+        <p>Persistent or severe acne and rosacea require physician-level intervention — prescription topicals, oral medications, hormonal evaluation in women, and combination protocols with in-office treatments.</p>
+        <ul class="highlights">
+          <li>Prescription medication management</li>
+          <li>Hormonal evaluation for adult-onset acne</li>
+          <li>Combination with in-office treatments</li>
+          <li>Long-term protocol oversight</li>
+        </ul>
+        <div class="meta"><span>PROTOCOL</span><b>ONGOING</b></div>
+        <div class="arr">INQUIRE ABOUT ACNE/ROSACEA →</div>
+      </div>
+
+      <div class="card reveal reveal-d-2">
+        <div class="roman">vi · Pigment</div>
+        <span class="num">// T1_MELASMA</span>
+        <h3>Melasma <i>Protocol</i></h3>
+        <p class="tagline">The pigment condition that requires physician-level care.</p>
+        <p>Melasma is one of the most challenging pigment conditions to treat — over-treatment can worsen it dramatically. Dr. Katona's dermatology background provides the diagnostic precision and protocol-design experience.</p>
+        <ul class="highlights">
+          <li>Physician-designed protocols</li>
+          <li>Combines topical, oral, and procedural therapy</li>
+          <li>Avoids over-treatment that worsens pigment</li>
+          <li>Long-term maintenance planning</li>
+        </ul>
+        <div class="meta"><span>PROTOCOL</span><b>STAGED</b></div>
+        <div class="arr">INQUIRE ABOUT MELASMA →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIER 2 — UNDER MEDICAL DIRECTION -->
+<section class="section section-divided">
+  <div class="container">
+    <div class="tier-banner t2 reveal">
+      <div class="badge">II</div>
+      <div>
+        <span class="tier-label t2"><span class="dot"></span>TIER 2 — UNDER DR. KATONA'S MEDICAL DIRECTION</span>
+        <h2>Essence's full aesthetic menu — performed by trained <i>providers</i> under physician oversight.</h2>
+        <p>These services are delivered by Essence's licensed aesthetic providers — registered nurses, physician assistants, and certified injectors and laser technicians — operating under Dr. Katona's standing medical direction. Every protocol, product line, and patient assessment is reviewed and approved by Dr. Katona.</p>
+      </div>
+    </div>
+
+    <div class="editorial-block reveal" style="margin-bottom:48px">
+      <p class="body"><strong style="color:var(--ember);font-style:italic;font-family:'Cormorant Garamond',serif;font-weight:500">What you should know:</strong> when you book a Botox appointment at Essence, you are not booking with Dr. Katona — you are booking with an Essence injector. The role Dr. Katona plays is the medical director who has reviewed and approved that injector's training, the products being used, the protocols being followed, and is available for consultation on complex cases.</p>
+      <p class="body">This model is how every reputable medspa operates. The difference at Essence is the depth of Dr. Katona's medical background overseeing it.</p>
+    </div>
+
+    <div class="cards-3" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+      <div class="card t2 reveal">
+        <span class="num">// T2_NEURO</span>
+        <h3>Neuro<i>modulators</i></h3>
+        <p class="tagline">Botox · Dysport · Xeomin · Jeuveau</p>
+        <p>Wrinkle relaxers for forehead lines, frown lines, crow's feet, and other dynamic facial wrinkles.</p>
+        <div class="arr">BOOK →</div>
+      </div>
+      <div class="card t2 reveal">
+        <span class="num">// T2_FILLER</span>
+        <h3>Dermal <i>Fillers</i></h3>
+        <p class="tagline">Juvéderm · Restylane · RHA · Versa</p>
+        <p>Hyaluronic acid fillers for lip, cheek, jawline, under-eye, and full-face restoration.</p>
+        <div class="arr">BOOK →</div>
+      </div>
+      <div class="card t2 reveal">
+        <span class="num">// T2_BIO</span>
+        <h3>Bio-<i>stimulators</i></h3>
+        <p class="tagline">Sculptra · Radiesse</p>
+        <p>Treatments that stimulate your own collagen production for gradual, long-lasting volume restoration.</p>
+        <div class="arr">BOOK →</div>
+      </div>
+      <div class="card t2 reveal">
+        <span class="num">// T2_THREAD</span>
+        <h3>PDO <i>Thread Lifts</i></h3>
+        <p class="tagline">Non-surgical lifting using dissolvable threads</p>
+        <p>Subtle lifting and collagen stimulation in the cheeks, jawline, and neck — alternative to surgical facelift.</p>
+        <div class="arr">BOOK →</div>
+      </div>
+      <div class="card t2 reveal">
+        <span class="num">// T2_NEEDLE</span>
+        <h3>Micro<i>needling</i></h3>
+        <p class="tagline">Standard and RF microneedling</p>
+        <p>Treats fine lines, scars, texture, and pore size. RF Microneedling adds skin-tightening to textural improvement.</p>
+        <div class="arr">BOOK →</div>
+      </div>
+      <div class="card t2 reveal">
+        <span class="num">// T2_LASER</span>
+        <h3>Laser <i>Treatments</i></h3>
+        <p class="tagline">Resurfacing · vascular · hair removal · IPL</p>
+        <p>Full laser menu. Device selection and treatment parameters reviewed under Dr. Katona's medical direction.</p>
+        <div class="arr">BOOK →</div>
+      </div>
+      <div class="card t2 reveal">
+        <span class="num">// T2_KYBELLA</span>
+        <h3><i>Kybella</i></h3>
+        <p class="tagline">Submental fat dissolution — under-chin treatment</p>
+        <p>Injectable treatment that permanently dissolves submental fat. Multiple sessions typically required.</p>
+        <div class="arr">BOOK →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AESTHETICS GALLERY -->
+<section class="section section-divided">
+  <div class="sec-head reveal">
+    <div class="sec-num">SECTION · IV <span style="color:var(--ink-soft)">/</span> EDITORIAL</div>
+    <h2 class="display">Aesthetics, in <i>practice</i>.</h2>
+  </div>
+
+  <div class="gallery">
+    <a href="#" class="tile reveal" style="background-image:url('../images/image%20(2).png')">
+      <span class="label">// MELASMA</span>
+      <div class="meta"><span class="num">i · Tier 1</span><h4>Pigment <i>protocols</i></h4></div>
+    </a>
+    <a href="#" class="tile reveal reveal-d-1" style="background-image:url('../images/image%20(3).png')">
+      <span class="label">// PRP / PRF</span>
+      <div class="meta"><span class="num">ii · Tier 1</span><h4>Skin <i>regeneration</i></h4></div>
+    </a>
+    <a href="#" class="tile reveal reveal-d-1" style="background-image:url('../images/image%20(5).png')">
+      <span class="label">// MICRONEEDLING</span>
+      <div class="meta"><span class="num">iii · Tier 2</span><h4>Collagen <i>induction</i></h4></div>
+    </a>
+    <a href="#" class="tile reveal reveal-d-2" style="background-image:url('../images/image%20(4).png')">
+      <span class="label">// IV / WELLNESS</span>
+      <div class="meta"><span class="num">iv · Tier 2</span><h4>Wellness <i>infusions</i></h4></div>
+    </a>
+  </div>
+</section>
+
+<!-- THE ESSENCE + KATONA MODEL -->
+<section class="section section-divided" style="background:var(--bg-2)">
+  <div class="sec-head reveal">
+    <div class="sec-num">SECTION · V <span style="color:var(--ink-soft)">/</span> THE MODEL</div>
+    <h2 class="display">What medical directorship actually means for <i>you</i>.</h2>
+  </div>
+
+  <div class="editorial-block reveal">
+    <p class="body">Medical directorship is not a marketing phrase at Essence — it is a clinical role with specific functions. Dr. Katona's responsibilities as Medical Director include: reviewing and approving every protocol used at the practice, training and credentialing the aesthetic providers who deliver Tier 2 services, evaluating new products and devices before they are introduced, and being available for direct consultation on complex cases.</p>
+    <p class="body">When a patient presents with an unusual finding — an asymmetric mole, an unexpected reaction, a complex aesthetic case — the standing protocol is to bring Dr. Katona in for evaluation. This is the safety net that distinguishes medical-grade aesthetic care from cosmetic-grade aesthetic care.</p>
+    <p class="body">For most routine treatments — a Botox refresh, a standard filler appointment, an annual laser hair removal session — you will work directly with Essence's aesthetic team. Dr. Katona's role is the oversight that ensures the protocols you receive are medically sound and the providers delivering them are appropriately trained.</p>
+  </div>
+</section>
+
+<!-- WHY DERMATOLOGY MATTERS -->
+<section class="section section-divided">
+  <div class="sec-head reveal">
+    <div class="sec-num">SECTION · V <span style="color:var(--ink-soft)">/</span> WHY DERMATOLOGY MATTERS</div>
+    <h2 class="display">What a dermatology-trained medical director catches that <i>others miss</i>.</h2>
+  </div>
+
+  <div class="situations">
+    <div class="situation head">
+      <div class="label">SITUATION</div>
+      <div class="col">WITHOUT DERMATOLOGY</div>
+      <div class="col">WITH DERMATOLOGY</div>
+    </div>
+    <div class="situation reveal">
+      <div class="label">Pre-treatment evaluation</div>
+      <div class="col without"><span class="h">— STANDARD</span>Generic medical clearance.</div>
+      <div class="col with"><span class="h">— DR. KATONA</span>Skin examination identifies concerning lesions, contraindications, or conditions affecting treatment outcome before treatment begins.</div>
+    </div>
+    <div class="situation reveal">
+      <div class="label">Unexpected reaction</div>
+      <div class="col without"><span class="h">— STANDARD</span>Reaction managed with general medical knowledge.</div>
+      <div class="col with"><span class="h">— DR. KATONA</span>Reaction recognized and treated with dermatology-specific expertise — distinguishing between expected post-procedure response, allergic reaction, and underlying skin condition.</div>
+    </div>
+    <div class="situation reveal">
+      <div class="label">Pigment conditions</div>
+      <div class="col without"><span class="h">— STANDARD</span>Standard treatment protocol applied; melasma sometimes worsened by aggressive treatment.</div>
+      <div class="col with"><span class="h">— DR. KATONA</span>Pigment condition properly diagnosed; treatment intensity calibrated to avoid worsening; combination protocols built around root cause.</div>
+    </div>
+    <div class="situation reveal">
+      <div class="label">Suspicious lesions during routine treatment</div>
+      <div class="col without"><span class="h">— STANDARD</span>Lesion may go unnoticed or treated cosmetically.</div>
+      <div class="col with"><span class="h">— DR. KATONA</span>Lesion identified, evaluated, biopsied if needed, and addressed before becoming a serious problem.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-divided" style="background:var(--bg-2)">
+  <div class="sec-head reveal">
+    <div class="sec-num">SECTION · VI <span style="color:var(--ink-soft)">/</span> PATIENT VOICES</div>
+    <h2 class="display">In their <i>own words</i>.</h2>
+  </div>
+  <div class="testimonials" style="grid-template-columns:repeat(2,1fr);max-width:1100px">
+    <div class="testimonial reveal">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <blockquote>I came in for filler and during the consultation Dr. Katona noticed a mole on my temple I'd never thought twice about. He biopsied it the same week. It was an early melanoma. I got filler eventually — but more importantly I got a real medical evaluation that probably saved my life.</blockquote>
+      <cite><b>Skin Screening + Filler</b>Edgebrook, Chicago</cite>
+    </div>
+    <div class="testimonial reveal reveal-d-1">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <blockquote>I'd been chasing my melasma at three different medspas with no progress. Dr. Katona's protocol was completely different — slower, more methodical, and the only thing that has actually worked.</blockquote>
+      <cite><b>Melasma Treatment Protocol</b>Chicago, IL</cite>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="section section-divided">
+  <div class="sec-head reveal">
+    <div class="sec-num">SECTION · VII <span style="color:var(--ink-soft)">/</span> AESTHETICS FAQs</div>
+    <h2 class="display">Most <i>asked</i>.</h2>
+  </div>
+
+  <div class="faqs reveal">
+    <details class="faq"><summary>Does Dr. Katona personally perform Botox and filler injections?<span class="icon">+</span></summary><div class="faq-body"><p>No — Botox, fillers, and most other aesthetic injections at Essence are performed by trained certified injectors under Dr. Katona's medical direction. Dr. Katona personally performs PRP/PRF, medical-grade chemical peels, sclerotherapy, skin cancer screening, and the medical management of acne, rosacea, and melasma. The two-tier model is standard at every reputable medspa — what's unusual at Essence is the depth of medical training overseeing it.</p></div></details>
+    <details class="faq"><summary>What is a medical director at a medspa?<span class="icon">+</span></summary><div class="faq-body"><p>A medical director is the licensed physician responsible for the medical protocols, provider training, product selection, and overall medical oversight of a medical spa's operations. Illinois law requires medical spas offering medical-grade procedures to have physician oversight. The depth of that oversight varies dramatically between practices — some medical directors are minimally involved, while others (like Dr. Katona at Essence) are actively engaged in protocol design, complex case review, and direct patient care.</p></div></details>
+    <details class="faq"><summary>Why does dermatology training matter at a medspa?<span class="icon">+</span></summary><div class="faq-body"><p>Most medspa procedures operate on or just under the skin. A medical director with dermatology training brings expertise in skin biology, pigment conditions, allergic reactions, suspicious lesion identification, and the interaction between aesthetic procedures and underlying skin conditions. Many medspas operate under medical directors whose specialty is unrelated to skin — internal medicine, family practice, or emergency medicine. Dr. Katona's three dermatology fellowships are uncommon for a medspa medical director.</p></div></details>
+    <details class="faq"><summary>Will I see Dr. Katona during my appointment?<span class="icon">+</span></summary><div class="faq-body"><p>It depends on the service. For Tier 1 services (PRP/PRF, medical chemical peels, skin screening, sclerotherapy, acne/rosacea, melasma), yes — Dr. Katona personally performs the treatment. For Tier 2 services (Botox, fillers, lasers, microneedling, etc.), you will work with an Essence aesthetic provider; Dr. Katona is available for consultation on complex cases or if any concerns arise during your appointment.</p></div></details>
+    <details class="faq"><summary>How much do treatments cost?<span class="icon">+</span></summary><div class="faq-body"><p>Costs vary widely by treatment. Botox is typically priced per unit ($14 — $18 per unit at most Chicago-area medspas). Fillers are typically priced per syringe ($650 — $1,100 per syringe). PRP for face packages run $1,500 — $3,000 for a series. Medical chemical peels run $300 — $800 per session. Specific pricing is provided at consultation.</p></div></details>
+    <details class="faq"><summary>Can I get a skin cancer screening at Essence?<span class="icon">+</span></summary><div class="faq-body"><p>Yes. Dr. Katona personally performs full-body skin screenings, a service most medspas don't offer because they don't have a dermatology-trained physician on staff. Annual screening is recommended for most adults over 35, and earlier for patients with personal or family history of skin cancer.</p></div></details>
+    <details class="faq"><summary>Is Essence's aesthetic team qualified?<span class="icon">+</span></summary><div class="faq-body"><p>Essence's aesthetic providers are licensed registered nurses, physician assistants, and certified injectors who have completed manufacturer training for the specific products and devices they use. Their training, scope of practice, and clinical protocols are reviewed and approved by Dr. Katona as Medical Director.</p></div></details>
+    <details class="faq"><summary>What if something goes wrong during a Tier 2 treatment?<span class="icon">+</span></summary><div class="faq-body"><p>Standing medical protocols address common reactions — for example, hyaluronidase is on hand to dissolve filler if needed, and reaction protocols are in place. For situations beyond standard protocols, Dr. Katona is contacted directly. This is the practical purpose of medical directorship — you have a physician's expertise available even when your provider is not a physician.</p></div></details>
+    <details class="faq"><summary>How do I know which tier my treatment falls under?<span class="icon">+</span></summary><div class="faq-body"><p>Tier 1 services performed personally by Dr. Katona are listed clearly on this page: PRP/PRF, medical chemical peels, skin cancer screening, sclerotherapy, and the medical management of acne, rosacea, and melasma. Everything else listed under Tier 2 — Botox, fillers, lasers, microneedling, threads, etc. — is performed by Essence's aesthetic team under Dr. Katona's medical direction. If you're ever unsure, ask at the time of booking.</p></div></details>
+    <details class="faq"><summary>Can Dr. Katona consult on a treatment I'm considering?<span class="icon">+</span></summary><div class="faq-body"><p>Yes. Patients with complex medical histories, prior aesthetic complications, or unusual cases are encouraged to request a consultation directly with Dr. Katona before booking treatment. Standard aesthetic consultations with Essence's team are also available — and Dr. Katona is brought in if any concerns arise during that process.</p></div></details>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="section section-divided" style="background:var(--bg-2)">
+  <div class="sec-head reveal">
+    <div class="sec-num">RELATED</div>
+    <h2 class="display">Continue <i>exploring</i>.</h2>
+  </div>
+  <div class="related-grid">
+    <a href="dr-katona.html" class="related reveal">
+      <div class="label">// PROVIDER</div>
+      <h4>About <i>Dr. Katona</i></h4>
+      <p>Three dermatology fellowships, 27 years of medical practice, dual US/UK licensure.</p>
+      <span class="arr">EXPLORE →</span>
+    </a>
+    <a href="hair-transplant.html" class="related reveal reveal-d-1">
+      <div class="label">// 01_TRANSPLANT</div>
+      <h4>Hair <i>Transplant</i></h4>
+      <p>Surgical hair restoration performed personally by Dr. Katona.</p>
+      <span class="arr">EXPLORE →</span>
+    </a>
+    <a href="hair-restoration.html" class="related reveal reveal-d-2">
+      <div class="label">// 02_RESTORATION</div>
+      <h4>Hair <i>Restoration</i></h4>
+      <p>PRP, scalp micropigmentation, and medical hair loss therapy.</p>
+      <span class="arr">EXPLORE →</span>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="consult">
+  <span class="eyebrow reveal"><span class="dot"></span>BEGIN</span>
+  <h2 class="reveal reveal-d-1">Schedule a consultation under physician <i>oversight</i>.</h2>
+  <p class="body reveal reveal-d-2">Whether you need a treatment Dr. Katona personally performs or an Essence aesthetic provider's expertise under his medical direction, every consultation begins the same way — with a complete clinical evaluation.</p>
+  <div class="ctas reveal reveal-d-3">
+    <a href="#" class="btn btn-primary btn-large">Book Free Consultation <span class="arr">→</span></a>
+    <a href="tel:+1773XXXXXXX" class="btn btn-ghost btn-large">Call (773) XXX-XXXX</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="grid">
+    <div>
+      <a href="index.html" class="brand">Katona<sup>®</sup></a>
+      <p class="tagline">27 years. 20,000+ procedures. One surgeon — at Essence MedSpa, Edgebrook.</p>
+      <address>5418 W. Devon Avenue<br>Edgebrook, Chicago, IL 60646<br><a href="tel:+1773XXXXXXX">(773) XXX-XXXX</a><br><a href="mailto:consult@essencemedspachicago.com">consult@essencemedspachicago.com</a></address>
+    </div>
+    <div><h5>— Services</h5><ul>
+      <li><a href="hair-transplant.html">Hair Transplant</a></li>
+      <li><a href="hair-restoration.html">Hair Restoration</a></li>
+      <li><a href="advanced-aesthetics.html">Advanced Aesthetics</a></li>
+      <li><a href="dr-katona.html">About Dr. Katona</a></li>
+    </ul></div>
+    <div><h5>— Hours</h5><ul>
+      <li>Mon — Thu &nbsp; 9:00 — 7:00</li>
+      <li>Friday &nbsp; 9:00 — 6:00</li>
+      <li>Saturday &nbsp; 10:00 — 4:00</li>
+      <li>Sunday &nbsp; Closed</li>
+    </ul></div>
+    <div><h5>— Connect</h5><ul>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Google Reviews · 4.9 ★</a></li>
+      <li><a href="book.html">Book Consultation →</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Katona Hair Restoration at Essence MedSpa & Wellness Center · Edgebrook, Chicago</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Compliance</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
